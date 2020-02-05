@@ -14,9 +14,12 @@ export default class Main extends Component {
         <Content >
         
           <Card>
-            <Icon name="my-location" size={20} style={{ textAlign:'right', marginRight:10, padding:5}} />
+            
          </Card>
+        
         </Content>
+        <Icon name="my-location" size={20} style={{ textAlign:'right', marginRight:10, padding:5}} />
+        
 
         <SearchBar/> 
         <CurrentLocation/>
