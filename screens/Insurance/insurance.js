@@ -19,9 +19,9 @@ export default class Insurance extends Component {
 
 
           <List>
-            <ListItem avatar>
-              <Left>
-                <Personalaccident name="shield-account" size={20} style={{ textAlign: 'right' }} />
+            <ListItem avatar >
+              <Left  >
+                <Personalaccident name="shield-account" size={20} style={{ textAlign: 'right'}} />
               </Left>
               <Body>
                 <Text>Personal Accident/Accidental Death</Text>

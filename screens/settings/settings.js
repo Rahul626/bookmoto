@@ -2,32 +2,32 @@
 import React, { Component } from 'react';
 //import react in our code.
 import { StyleSheet, View, Text } from 'react-native';
-import { Container, Content, Button, ListItem, Left,Icon, Body } from 'native-base';
-import {  List,  Right, Thumbnail, } from 'native-base';
-
-
+import { Container, Content, Button, ListItem, Left,Icon, Separator, Body } from 'native-base';
 
 import Accounticon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Favorite from 'react-native-vector-icons/MaterialIcons';
 
 import Pref from 'react-native-vector-icons/Entypo';
 import Lanicon from 'react-native-vector-icons/Entypo';
-
-
-
-// import all basic components
-
+import Shareicon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Contactsicon from 'react-native-vector-icons/AntDesign';
+import Logouticon from 'react-native-vector-icons/MaterialCommunityIcons';
+import HelpIcon from 'react-native-vector-icons/MaterialIcons';
+import Betaicon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Mailicon from 'react-native-vector-icons/AntDesign';
+import Info from 'react-native-vector-icons/Entypo';
 export default class Settings extends Component {
   //Screen3 Component
   render() {
     return (
       <Container>
-        
-   
         <Content>
+        <Separator bordered>
+            <Text>General</Text>
+          </Separator>
           <ListItem icon>
             <Left>
-              <Button style={{ backgroundColor: "#FF9501" }}>
+              <Button style={{ backgroundColor: "#01a3a4" }}>
                 <Accounticon active name="account" />
               </Button>
             </Left>
@@ -38,7 +38,7 @@ export default class Settings extends Component {
           </ListItem>
           <ListItem icon>
             <Left>
-              <Button style={{ backgroundColor: "#007AFF" }}>
+              <Button style={{ backgroundColor: "#ff9f43" }}>
                 <Favorite active name="favorite-border" />
               </Button>
             </Left>
@@ -50,7 +50,7 @@ export default class Settings extends Component {
           </ListItem>
           <ListItem icon>
             <Left>
-              <Button style={{ backgroundColor: "#007AFF" }}>
+              <Button style={{ backgroundColor: "#54a0ff" }}>
                 <Pref active name="sound-mix" />
               </Button>
             </Left>
@@ -61,7 +61,7 @@ export default class Settings extends Component {
           </ListItem>
           <ListItem icon>
             <Left>
-              <Button style={{ backgroundColor: "#007AFF" }}>
+              <Button style={{ backgroundColor: "#8395a7" }}>
                 <Lanicon active name="language" />
               </Button>
             </Left>
@@ -72,8 +72,8 @@ export default class Settings extends Component {
           </ListItem>
           <ListItem icon>
             <Left>
-              <Button style={{ backgroundColor: "#007AFF" }}>
-                <Icon active name="bluetooth" />
+              <Button style={{ backgroundColor: "#00E5FF" }}>
+                <Shareicon active name="share" />
               </Button>
             </Left>
             <Body>
@@ -81,19 +81,78 @@ export default class Settings extends Component {
             </Body>
            
           </ListItem>
-          <List>
-            <ListItem avatar>
-              <Left>
-                <Thumbnail source={{ uri: 'https://cdn3.iconfinder.com/data/icons/basic-ui-elements-2-4-flat-style-36/512/Basic_UI_Elements_2.4_-_Flat_Style_-_36-48-512.png' }} />
-              </Left>
-              <Body>
-                <Text>Kumar Pratik</Text>
-      
-              </Body>
-             
-            </ListItem>
-          </List>
+          <ListItem icon>
+            <Left>
+              <Button style={{ backgroundColor: "#007AFF" }}>
+                <Contactsicon active name="contacts" />
+              </Button>
+            </Left>
+            <Body>
+              <Text>Emergency Contacts</Text>
+            </Body>
+           
+          </ListItem>
+          <ListItem icon>
+            <Left>
+              <Button style={{ backgroundColor: "#795548" }}>
+                <Logouticon  active name="logout-variant" />
+              </Button>
+            </Left>
+            <Body>
+              <Text>Logout</Text>
+            </Body>
+           
+          </ListItem>
+          <Separator bordered>
+            <Text>Others</Text>
+          </Separator>
           
+          <ListItem icon>
+            <Left>
+              <Button style={{ backgroundColor: "#FFEA00" }}>
+                <Info active name="info" />
+              </Button>
+            </Left>
+            <Body>
+              <Text>About Us</Text>
+            </Body>
+           
+          </ListItem>
+          <ListItem icon>
+            <Left>
+              <Button style={{ backgroundColor: "#007AFF" }}>
+                <Mailicon active name="mail" />
+              </Button>
+            </Left>
+            <Body>
+              <Text>Contact us</Text>
+            </Body>
+           
+          </ListItem>
+          <ListItem icon>
+            <Left>
+              <Button style={{ backgroundColor: "#574b90" }}>
+                <Betaicon active name="beta" />
+              </Button>
+            </Left>
+            <Body>
+              <Text>Subscribe to Beta</Text>
+            </Body>
+           
+          </ListItem>
+          <ListItem icon>
+            <Left>
+              <Button style={{ backgroundColor: "#d35400" }}>
+                <HelpIcon active name="help-outline" />
+              </Button>
+            </Left>
+            <Body>
+              <Text>Help</Text>
+            </Body>
+           
+          </ListItem>
+          
+      
           
         </Content>
       </Container>

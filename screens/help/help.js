@@ -9,7 +9,8 @@ export default class Help extends Component {
     return (
       <View style={styles.MainContainer}>
         <Text style={{ fontSize: 23 }}>help  Screen  </Text>
-        <Text style={{ fontSize: 23 }}> help Screen  </Text>
+     
+     
       </View>
     );
   }

@@ -94,7 +94,7 @@ const Settings_StackNavigator = createStackNavigator({
   Third: {
     screen: Settings,
     navigationOptions: ({ navigation }) => ({
-      title: 'Settings Screen ',
+      title: 'Settings ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
         backgroundColor: '#FF9800',
@@ -109,7 +109,7 @@ const Notification_StackNavigator = createStackNavigator({
   Third: {
     screen: Notification,
     navigationOptions: ({ navigation }) => ({
-      title: 'Notification Screen ',
+      title: 'Your Notifications ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
         backgroundColor: '#FF9800',
@@ -123,7 +123,7 @@ const Invite_StackNavigator = createStackNavigator({
   Invite: {
     screen: Invite,
     navigationOptions: ({ navigation }) => ({
-      title: 'invite Screen ',
+      title: 'Invite friends  ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
         backgroundColor: '#FF9800',
@@ -137,7 +137,7 @@ const Powerpass_StackNavigator = createStackNavigator({
   Powerpass: {
     screen: Powerpass,
     navigationOptions: ({ navigation }) => ({
-      title: 'Powerpass Screen ',
+      title: 'Powerpass  ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
         backgroundColor: '#FF9800',
@@ -152,7 +152,7 @@ const Insurance_StackNavigator = createStackNavigator({
   Insurance: {
     screen: Insurance,
     navigationOptions: ({ navigation }) => ({
-      title: 'Insurance Screen ',
+      title: 'Insurance  ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
         backgroundColor: '#FF9800',
