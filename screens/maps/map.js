@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import { AppRegistry, StyleSheet, Dimensions, Image, View, StatusBar, TouchableOpacity } from "react-native";
 import { Container, Text } from "native-base";
 
-import MapView from 'react-native-maps';
-
-
-// Geolocation.setRNConfiguration(config);
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
 navigator.geolocation = require('@react-native-community/geolocation');
  Geolocation.getCurrentPosition(info => console.log(info));
@@ -88,7 +85,7 @@ class LocationA extends Component {
        longitudeDelta: 1
       }}>
 
-      {!!this.state.latitude && !!this.state.longitude && <MapView.Marker
+      {/* {!!this.state.latitude && !!this.state.longitude && <MapView.Marker
          coordinate={{"latitude":this.state.latitude,"longitude":this.state.longitude}}
          title={"Your Location"}
        />}
@@ -111,7 +108,8 @@ class LocationA extends Component {
           ]}
           strokeWidth={2}
           strokeColor="red"/>
-         }
+         } */}
+         
       </MapView>
     );
   }

@@ -11,9 +11,12 @@ import { useScreens } from 'react-native-screens';
 
 import Main from './screens/Main/main';
 
+
+
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
+import { DrawerActions } from '@react-navigation/native';
 
 // import Main from './screens/Main/main'
 import Payments from './screens/payment/payment';
@@ -37,6 +40,12 @@ import Iconpass from 'react-native-vector-icons/Entypo';
 
 
 class NavigationDrawerStructure extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      isSideMenuOpen: false
+    };
+  } 
   
   //Structure for the navigatin Drawer
   toggleDrawer = () => {
@@ -49,12 +58,13 @@ class NavigationDrawerStructure extends Component {
       <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity onPress={this.toggleDrawer.bind(this)}>
           {/*Donute Button Image */}
-          <Icon name="md-menu" size={20} style={{ marginRight: 5, paddingRight:5 }} />
+          <Icon name="md-menu" size={25} style={{ marginLeft: 15}} />
         </TouchableOpacity>
       </View>
     );
   }
 }
+
 
 
 const Payments_StackNavigator = createStackNavigator({
@@ -119,7 +129,7 @@ const Notification_StackNavigator = createStackNavigator({
   },
 });
 const Invite_StackNavigator = createStackNavigator({
-  //All the screen from the Screen3 will be indexed here
+ 
   Invite: {
     screen: Invite,
     navigationOptions: ({ navigation }) => ({
@@ -133,7 +143,7 @@ const Invite_StackNavigator = createStackNavigator({
   },
 });
 const Powerpass_StackNavigator = createStackNavigator({
-  //All the screen from the Screen3 will be indexed here
+
   Powerpass: {
     screen: Powerpass,
     navigationOptions: ({ navigation }) => ({
@@ -148,7 +158,7 @@ const Powerpass_StackNavigator = createStackNavigator({
 });
 
 const Insurance_StackNavigator = createStackNavigator({
-  //All the screen from the Screen3 will be indexed here
+  
   Insurance: {
     screen: Insurance,
     navigationOptions: ({ navigation }) => ({
@@ -162,7 +172,7 @@ const Insurance_StackNavigator = createStackNavigator({
   },
 });
 const Help_StackNavigator = createStackNavigator({
-  //All the screen from the Screen3 will be indexed here
+
   Help: {
     screen: Help,
     navigationOptions: ({ navigation }) => ({

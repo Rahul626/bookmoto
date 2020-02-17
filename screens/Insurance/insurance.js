@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Button, Dimensions } from 'react-native';
+import { View, Button, Dimensions , ScrollView, SafeAreaView} from 'react-native';
 import { List, ListItem, Left, Card, CardItem, Text, Body, Icon, Right } from 'native-base';
 import Boardicon from 'react-native-vector-icons/Feather';
 import PlusIcon from 'react-native-vector-icons/FontAwesome';
@@ -11,6 +11,8 @@ export default class Insurance extends Component {
 
   render() {
     return (
+      <SafeAreaView >
+      <ScrollView >
       <View >
         <Card>
           <CardItem header bordered style={{ backgroundColor: 'lightgrey' }}>
@@ -100,6 +102,8 @@ export default class Insurance extends Component {
 
 
       </View>
+      </ScrollView>
+    </SafeAreaView>
 
     );
   }

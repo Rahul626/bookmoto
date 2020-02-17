@@ -1,7 +1,7 @@
 //This is an example code for NavigationDrawer//
 import React, { Component } from 'react';
 //import react in our code.
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, ScrollView,SafeAreaView } from 'react-native';
 import { Container, Content, Button, ListItem, Left,Icon, Separator, Body } from 'native-base';
 
 import Accounticon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -20,6 +20,8 @@ export default class Settings extends Component {
   //Screen3 Component
   render() {
     return (
+      <SafeAreaView >
+      <ScrollView >
       <Container>
         <Content>
         <Separator bordered>
@@ -156,6 +158,8 @@ export default class Settings extends Component {
           
         </Content>
       </Container>
+      </ScrollView>
+    </SafeAreaView>
     );
   }
 }
