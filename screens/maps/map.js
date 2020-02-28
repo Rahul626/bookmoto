@@ -1,128 +1,115 @@
-import React, { Component } from "react";
-import { AppRegistry, StyleSheet, Dimensions, Image, View, StatusBar, TouchableOpacity } from "react-native";
-import { Container, Text } from "native-base";
+import React, { Component } from 'react';
+import { Dimensions, StyleSheet } from 'react-native';
+import MapView,{ PROVIDER_GOOGLE } from 'react-native-maps';
+import MapViewDirections from 'react-native-google-maps-directions';
 
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import Geolocation from '@react-native-community/geolocation';
-navigator.geolocation = require('@react-native-community/geolocation');
- Geolocation.getCurrentPosition(info => console.log(info));
+const { width, height } = Dimensions.get('window');
+const ASPECT_RATIO = width / height;
+const LATITUDE = 17.371610;
+const LONGITUDE = 78.500061;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 
-class LocationA extends Component {
+
+const GOOGLE_MAPS_APIKEY = 'AIzaSyCmdTRPhJZi5ThWQqKNKyZyk9Sxt_MSUvY';
+
+class locationA extends Component {
+
   constructor(props) {
     super(props);
 
+    // AirBnB's Office, and Apple Park
     this.state = {
-      latitude: null,
-      longitude: null,
-      error: null,
-      concat: null,
-      coords:[],
-      x: 'false',
-      cordLatitude:-6.23,
-      cordLongitude:106.75,
+      coordinates: [
+        {
+          latitude: 37.3317876,
+          longitude: -122.0054812,
+        },
+        {
+          latitude: 37.771707,
+          longitude: -122.4053769,
+        },
+      ],
     };
 
-    this.mergeLot = this.mergeLot.bind(this);
-
+    this.mapView = null;
   }
+
+  onMapPress = (e) => {
+    this.setState({
+      coordinates: [
+        ...this.state.coordinates,
+        e.nativeEvent.coordinate,
+      ],
+    });
+  }
+
+
   
-
-  componentDidMount() {
-  Geolocation.getCurrentPosition(
-       (position) => {
-         this.setState({
-           latitude: position.coords.latitude,
-           longitude: position.coords.longitude,
-           error: null,
-         });
-         this.mergeLot();
-       },
-       (error) => this.setState({ error: error.message }),
-       { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
-     );
-
-   }
-
-  mergeLot(){
-    if (this.state.latitude != null && this.state.longitude!=null)
-     {
-       let concatLot = this.state.latitude +","+this.state.longitude
-       this.setState({
-         concat: concatLot
-       }, () => {
-         this.getDirections(concatLot, "-6.270565,106.759550");
-       });
-     }
-
-   }
-
-   async getDirections(startLoc, destinationLoc) {
-         try {
-             let resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${ startLoc }&destination=${ destinationLoc }`)
-             let respJson = await resp.json();
-             let points = Polyline.decode(respJson.routes[0].overview_polyline.points);
-             let coords = points.map((point, index) => {
-                 return  {
-                     latitude : point[0],
-                     longitude : point[1]
-                 }
-             })
-             this.setState({coords: coords})
-             this.setState({x: "true"})
-             return coords
-         } catch(error) {
-           console.log('masuk fungsi')
-             this.setState({x: "error"})
-             return error
-         }
-     }
   render() {
     return (
-      <MapView style={styles.map} initialRegion={{
-       latitude:-6.270565,
-       longitude:106.759550,
-       latitudeDelta: 1,
-       longitudeDelta: 1
-      }}>
+      <MapView
+      provider="google"
+      showsUserLocation={true}
+          showsMyLocationButton={true}
+					showsUserLocation={true}
+					showsMyLocationButton={true}
+					showsCompass={true}
+					followsUserLocation={true}
+					loadingEnabled={true}
+					toolbarEnabled={true}
+					zoomEnabled={true}
+					rotateEnabled={true}
+      provider={ PROVIDER_GOOGLE }
+      
+        initialRegion={{
+          latitude: LATITUDE,
+          longitude: LONGITUDE,
+          latitudeDelta: LATITUDE_DELTA,
+          longitudeDelta: LONGITUDE_DELTA,
+        }}
+        style={[StyleSheet.absoluteFill,{flex: this.state.flex}]}
+        ref={c => this.mapView = c}
+        onPress={this.onMapPress}
+        
+      >
+        {this.state.coordinates.map((coordinate, index) =>
+          <MapView.Marker key={`coordinate_${index}`} coordinate={coordinate} key={`coordinate_${index}`} coordinate={coordinate} />
+        )}
+        {(this.state.coordinates.length >= 10) && (
+          <MapViewDirections
+            origin={this.state.coordinates[2]}
+            waypoints={ (this.state.coordinates.length > 2) ? this.state.coordinates.slice(1, -1): null}
+            destination={this.state.coordinates[this.state.coordinates.length-1]}
+            apikey={GOOGLE_MAPS_APIKEY}
+            strokeWidth={3}
+            strokeColor="red"
+            optimizeWaypoints={true}
+            onStart={(params) => {
+              console.log(`Started routing between "${params.origin}" and "${params.destination}"`);
+            }}
+            onReady={result => {
+              console.log('Distance: ${result.distance} km')
+              console.log('Duration: ${result.duration} min.')
 
-      {/* {!!this.state.latitude && !!this.state.longitude && <MapView.Marker
-         coordinate={{"latitude":this.state.latitude,"longitude":this.state.longitude}}
-         title={"Your Location"}
-       />}
-
-       {!!this.state.cordLatitude && !!this.state.cordLongitude && <MapView.Marker
-          coordinate={{"latitude":this.state.cordLatitude,"longitude":this.state.cordLongitude}}
-          title={"Your Destination"}
-        />}
-
-       {!!this.state.latitude && !!this.state.longitude && this.state.x == 'true' && <MapView.Polyline
-            coordinates={this.state.coords}
-            strokeWidth={2}
-            strokeColor="red"/>
-        }
-
-        {!!this.state.latitude && !!this.state.longitude && this.state.x == 'error' && <MapView.Polyline
-          coordinates={[
-              {latitude: this.state.latitude, longitude: this.state.longitude},
-              {latitude: this.state.cordLatitude, longitude: this.state.cordLongitude},
-          ]}
-          strokeWidth={2}
-          strokeColor="red"/>
-         } */}
-         
+              this.mapView.fitToCoordinates(result.coordinates, {
+                edgePadding: {
+                  right: (width / 20),
+                  bottom: (height / 20),
+                  left: (width / 20),
+                  top: (height / 20),
+                }
+              });
+            }}
+            onError={(errorMessage) => {
+              // console.log('GOT AN ERROR');
+            }}
+          />
+        )}
+        
       </MapView>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  map: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
-});
-
-export default LocationA;
+export default locationA ;

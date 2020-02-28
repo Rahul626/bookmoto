@@ -1,56 +1,66 @@
 import React, { Component } from 'react';
 import {
+    AppRegistry,
   StyleSheet,
   Text,
-  View,
-  Image,
-  TextInput,
+  TextInput ,View,
   TouchableOpacity
 } from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import Lockicon from 'react-native-vector-icons/SimpleLineIcons';
+
+import Otp from './OtpSetup';
+import App from '../Main/main'
 
 const background = require("../../assets/images/two-wheeler-insurance-landing-img.png");
 
 
-export default class Login extends Component {
+export default class Register extends Component {
   render() {
+    const { navigate } = this.props.navigation;
     return (
      <>
         <View style={styles.container} />
         <View style={styles.wrapper}>
+
+
           <View style={styles.inputWrap}>
+
             <View style={styles.iconWrap}>
-              <Image
-               
-              />
+             <Text>+91</Text>
             </View>
             <TextInput
-              placeholder="Registered Mobile Number"
+              placeholder="Your mobile number"
+           
               style={styles.input}
               underlineColorAndroid="transparent"
               numeric
               keyboardType={'numeric'}
             />
           </View>
-          <View style={styles.inputWrap}>
+           <View style={styles.inputWrap}>
             <View style={styles.iconWrap}>
-              <Image
-               
-              />
+            <Lockicon name="lock" size={20} />
             </View>
-            <TextInput
-              placeholder="Password"
+         <TextInput
+              placeholder="OTP"
               secureTextEntry
               style={styles.input}
               underlineColorAndroid="transparent"
-            />
-          </View>
+              numeric
+              keyboardType={'numeric'}
+            /> 
+          </View> 
+      
           <TouchableOpacity activeOpacity={.5}>
             <View style={styles.button}>
-              <Text style={styles.buttonText}>Login</Text>
+                <Text onPress={() =>
+            this.props.navigation.navigate('App')
+          } >Next</Text>
             </View>
           </TouchableOpacity>
           <TouchableOpacity activeOpacity={.5}>
-            <View style={{backgroundColor:'green'}}>
+            <View>
               <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
             </View>
           </TouchableOpacity>
@@ -81,6 +91,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
+    height:40,
     paddingHorizontal: 10,
     backgroundColor: '#FFF'
   },

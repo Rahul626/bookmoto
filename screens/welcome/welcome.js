@@ -2,9 +2,11 @@
 import React from 'react';
 
 import { StyleSheet, View, Text, Image } from 'react-native';
-import App from '../../App'
+import App from '../../App';
 
 import AppIntroSlider from 'react-native-app-intro-slider';
+import Login from '../../screens/login/login';
+import Register  from '../register/register';
 export default class Welcome extends React.Component {
   constructor(props) {
     super(props);
@@ -40,7 +42,7 @@ export default class Welcome extends React.Component {
     if (this.state.showRealApp) {
       //Real Application
       return (
-       <App/>
+       <Register/>
       
       );
     } else {
