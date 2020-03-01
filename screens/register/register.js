@@ -1,71 +1,93 @@
 import React, { Component } from 'react';
 import {
-    AppRegistry,
   StyleSheet,
-  Text,
-  TextInput ,View,
+  Text,View,
+  Image,
+  TextInput, Switch,
   TouchableOpacity
 } from 'react-native';
-import { createStackNavigator, createAppContainer } from 'react-navigation';
-import Lockicon from 'react-native-vector-icons/SimpleLineIcons';
 
-import Otp from './OtpSetup';
-import App from '../Main/main'
-
-const background = require("../../assets/images/two-wheeler-insurance-landing-img.png");
+ 
 
 
 export default class Register extends Component {
+  constructor() {
+    super();
+
+    this.state = { hidePassword: true }
+  }
+
+  setPasswordVisibility = () => {
+    this.setState({ hidePassword: !this.state.hidePassword });
+  }
+
   render() {
-    const { navigate } = this.props.navigation;
     return (
      <>
         <View style={styles.container} />
+
+        <View >
+        <Text style={{backgroundColor:'transparent', textAlign:'center', fontSize:30}} >Welcome! Namaste!</Text>
+        <Text style={{backgroundColor:'transparent', textAlign:'center', fontSize:20}} >#1 BookMoto in India </Text>
+
+        </View>
+
+        <Image
+          style={{ height:100,width:102, marginHorizontal:150,marginVertical:71}}
+          source={require('../../assets/images/firstlogo-big.png')}
+        />
+
+     
+     
         <View style={styles.wrapper}>
-
-
+          
+     
           <View style={styles.inputWrap}>
-
-            <View style={styles.iconWrap}>
-             <Text>+91</Text>
-            </View>
-            <TextInput
-              placeholder="Your mobile number"
            
+            <TextInput
+              placeholder="Enter Mobile Number"
               style={styles.input}
               underlineColorAndroid="transparent"
               numeric
-              keyboardType={'numeric'}
-            />
+              keyboardType={'numeric'}>
+               
+              </TextInput>
+    
           </View>
-           <View style={styles.inputWrap}>
-            <View style={styles.iconWrap}>
-            <Lockicon name="lock" size={20} />
-            </View>
-         <TextInput
-              placeholder="OTP"
+          <View style={styles.inputWrap}>
+    
+            <TextInput
+              placeholder="Password"
               secureTextEntry
               style={styles.input}
-              underlineColorAndroid="transparent"
-              numeric
-              keyboardType={'numeric'}
-            /> 
-          </View> 
+           
+              secureTextEntry={this.state.showPassword}
+              
+              onChangeText={(password) => this.setState({ password })}>
+
+              </TextInput>
+                  <TouchableOpacity activeOpacity={0.8} style={styles.touachableButton} onPress={this.setPasswordVisibility}>
+            <Image style={{height:20,width:20}} source={(this.state.hidePassword) ? require('../../images/eye.png') : require('../../images/hide.png')} style={styles.buttonImage} />
+          </TouchableOpacity>
       
+          </View>
           <TouchableOpacity activeOpacity={.5}>
             <View style={styles.button}>
-                <Text onPress={() =>
-            this.props.navigation.navigate('App')
-          } >Next</Text>
+              <Text >Register</Text>
+            
+            </View>
+            <TouchableOpacity activeOpacity={.5}>
+            <View >
+              <Text style={styles.forgotPasswordText}>Registered?login here</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={.5}>
-            <View>
-              <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-            </View>
           </TouchableOpacity>
-        </View>
+        
+            
+            </View>
+      
         <View style={styles.container} />
+        <Text style={{textAlign:"center"}} >#Made in India</Text>
         </>
     
     );
@@ -75,6 +97,8 @@ export default class Register extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  
+   
   },
   background: {
     width: null,
@@ -87,37 +111,40 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginVertical: 10,
     height: 40,
-    backgroundColor: "transparent"
+    backgroundColor: "transparent",
+   
   },
   input: {
     flex: 1,
-    height:40,
     paddingHorizontal: 10,
-    backgroundColor: '#FFF'
+    backgroundColor: '#FFF',
+    borderRadius:30
   },
-  iconWrap: {
-    paddingHorizontal: 7,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#fcba03"
-  },
-  icon: {
-    width: 20,
-    height: 20,
-  },
+
   button: {
-    backgroundColor: "#fcba03",
+    backgroundColor: "#F9D815",
     paddingVertical: 15,
     marginVertical: 15,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    borderRadius:30
   },
-  buttonText: {
-    color: "#FFF",
-    fontSize: 18
+
+  buttonImage: {
+    resizeMode: 'contain',
+    height: '100%',
+    width: '100%',
+    
+  },
+  touachableButton: {
+    position: 'absolute',
+    right: 3,
+    height: 34,
+    width: 31,
+    padding: 2
   },
   forgotPasswordText: {
-    color: "#FFF",
+  
     backgroundColor: "transparent",
     textAlign: "center"
   }

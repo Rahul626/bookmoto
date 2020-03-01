@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import { useScreens } from 'react-native-screens';
 
-import Main from './screens/Main/main';
 
 
 
@@ -18,15 +17,15 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import { DrawerActions } from '@react-navigation/native';
 
-// import Main from './screens/Main/main'
+import locationA from './screens/maps/map';
 import Payments from './screens/payment/payment';
 import Myrides from './screens/myrides/myrides';
 import Settings from './screens/settings/settings';
-import Notification from './screens/Notification/notification';
+import Notification from './screens/notification/notification';
 import Invite from './screens/invite/invite';
-import Insurance from './screens/Insurance/insurance';
-import Help from './screens/Insurance/insurance';
-import Powerpass from './screens/Power Pass/powerpass';
+import Insurance from './screens/insurance/insurance';
+import Help from './screens/insurance/insurance';
+import Powerpass from './screens/powerpass/powerpass';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import Iconpayment from 'react-native-vector-icons/MaterialIcons';
@@ -75,7 +74,7 @@ const Payments_StackNavigator = createStackNavigator({
       title: 'Payments Screen ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
-        backgroundColor: '#FF9800',
+        backgroundColor: '#F9D815',
       },
       headerTintColor: '#fff',
     }),
@@ -92,7 +91,7 @@ const Myrides_StackNavigator = createStackNavigator({
       title: 'Myrides Screen ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
-        backgroundColor: '#FF9800',
+        backgroundColor: '#F9D815',
       },
       headerTintColor: '#fff',
     }),
@@ -101,13 +100,13 @@ const Myrides_StackNavigator = createStackNavigator({
 
 const Settings_StackNavigator = createStackNavigator({
   //All the screen from the Screen3 will be indexed here
-  Third: {
+  Settings: {
     screen: Settings,
     navigationOptions: ({ navigation }) => ({
       title: 'Settings ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
-        backgroundColor: '#FF9800',
+        backgroundColor: '#F9D815',
       },
       headerTintColor: '#fff',
     }),
@@ -116,13 +115,13 @@ const Settings_StackNavigator = createStackNavigator({
 
 const Notification_StackNavigator = createStackNavigator({
   //All the screen from the Screen3 will be indexed here
-  Third: {
+  Notification: {
     screen: Notification,
     navigationOptions: ({ navigation }) => ({
       title: 'Your Notifications ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
-        backgroundColor: '#FF9800',
+        backgroundColor: '#F9D815',
       },
       headerTintColor: '#fff',
     }),
@@ -136,7 +135,7 @@ const Invite_StackNavigator = createStackNavigator({
       title: 'Invite friends  ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
-        backgroundColor: '#FF9800',
+        backgroundColor: '#F9D815',
       },
       headerTintColor: '#fff',
     }),
@@ -150,7 +149,7 @@ const Powerpass_StackNavigator = createStackNavigator({
       title: 'Powerpass  ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
-        backgroundColor: '#FF9800',
+        backgroundColor: '#F9D815',height:60,
       },
       headerTintColor: '#fff',
     }),
@@ -165,7 +164,7 @@ const Insurance_StackNavigator = createStackNavigator({
       title: 'Insurance  ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
-        backgroundColor: '#FF9800',
+        backgroundColor: '#F9D815',
       },
       headerTintColor: '#fff',
     }),
@@ -179,7 +178,7 @@ const Help_StackNavigator = createStackNavigator({
       title: 'Help Screen ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
-        backgroundColor: '#FF9800',
+        backgroundColor: '#F9D815',
       },
       headerTintColor: '#fff',
     }),
@@ -188,25 +187,24 @@ const Help_StackNavigator = createStackNavigator({
 
 
 const DrawerContent = createDrawerNavigator({
-  // Drawer Optons and indexing
-  // Main: {
+  // map: {
   //   //Title
-  //   screen: Main,
+  //   screen: map,
   //   navigationOptions: {
-  //     drawerLabel: 'Main',
+  //     drawerLabel: 'map',
   //     drawerIcon:()=>
-  //     (  <Main  />)
+  //     (  <locationA  />)
   //   },
   // },
 
 
   Myrides: {
-    //Title
+    
     screen: Myrides_StackNavigator,
-    navigationOptions: {
+    navigationOptions: { 
       drawerLabel: 'Myrides',
       drawerIcon:()=>
-      (  <Returnride name="back-in-time" size={20}  />)
+      (  <Returnride name="back-in-time" size={20} style={{backgroundColor:'#01a3a4', color:'white',borderRadius:50}} />)
     },
   },
   Payments: {
@@ -215,7 +213,7 @@ const DrawerContent = createDrawerNavigator({
     navigationOptions: {
       drawerLabel: 'Payments',
       drawerIcon:()=>
-      (  <Iconpayment name="payment" size={20}  />)
+      (  <Iconpayment name="payment" size={20}  style={{backgroundColor:'#54a0ff', color:'white',borderRadius:50}} />)
     },
   },
   Settings: {
@@ -224,7 +222,7 @@ const DrawerContent = createDrawerNavigator({
     navigationOptions: {
       drawerLabel: 'Settings',
       drawerIcon: ()=>
-      ( <Mdsettings name="md-settings" size={20} />)
+      ( <Mdsettings name="md-settings" size={20} style={{backgroundColor:'#ff9f43', color:'white',borderRadius:50}} />)
       
     },
   },
@@ -234,7 +232,7 @@ const DrawerContent = createDrawerNavigator({
     navigationOptions: {
       drawerLabel:'Notifications',
       drawerIcon: ()=>
-      ( <Notify name="ios-notifications-outline" size={20} />)
+      ( <Notify name="ios-notifications-outline" size={20} style={{backgroundColor:'#00E5FF',width:20,height:20, color:'white',borderRadius:50}} />)
       
     },
   },
@@ -244,7 +242,7 @@ const DrawerContent = createDrawerNavigator({
     navigationOptions: {
       drawerLabel:'Invite Friends',
       drawerIcon: ()=>
-      ( <Gift name="ios-gift" size={20} />)
+      ( <Gift name="ios-gift" size={20} style={{backgroundColor:'#8395a7',width:20, color:'white',borderRadius:50}} />)
       
     },
   },
@@ -254,27 +252,27 @@ const DrawerContent = createDrawerNavigator({
     navigationOptions: {
       drawerLabel:' Power Pass',
       drawerIcon: ()=>
-      ( <Iconpass name="wallet" size={20} />)
+      ( <Iconpass name="wallet" size={20} style={{backgroundColor:'red', color:'white',borderRadius:50}} />)
       
     },
   },
   Insurance: {
-    //Title
+    
     screen:Insurance_StackNavigator,
     navigationOptions: {
       drawerLabel: 'Insurance',
       drawerIcon: ()=>
-      ( <Insuicon name="security" size={20} />)
+      ( <Insuicon name="security" size={20} style={{backgroundColor:'#795548', color:'white',borderRadius:50}} />)
       
     },
   },
   Help: {
-    //Title
+    
     screen: Help_StackNavigator,
     navigationOptions: {
       drawerLabel:' Help',
       drawerIcon: ()=>
-      ( <HelpIcon name="help" size={20} />)
+      ( <HelpIcon name="help" size={20} style={{backgroundColor:'#00E5FF', color:'white',borderRadius:50}} />)
       
     },
   },

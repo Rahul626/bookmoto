@@ -13,7 +13,7 @@ export default class Profile extends Component {
   render() {
     return (
       <Container>
-        <Header style={{backgroundColor:'#FBE400',height:80}}  />
+        <Header  style={{height:60, backgroundColor:'#F9D815'}}/>
         <Content>
            <Text style={{fontSize:20,paddingTop:20, paddingLeft:20,margin:5}} >Profile</Text> 
           <List >
