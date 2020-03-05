@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,View,
-  Image,
+  Image,Button,
   TextInput,
   TouchableOpacity
 } from 'react-native';
+
  
 
 export default class Login extends Component {
@@ -32,17 +33,12 @@ export default class Login extends Component {
 
         <Image
           style={{ height:100,width:102, marginHorizontal:150,marginVertical:71,Color: "#F9D815"}}
-          source={require('../../assets/images/firstlogo-big.png')}
+          source={require('../../assets/images/logo.png')}
         />
-
-     
-     
-        <View style={styles.wrapper}>
           
-     
+        <View style={styles.wrapper}>
           <View style={styles.inputWrap}>
       
-           
             <TextInput
               placeholder="Registered Mobile Number"
               style={styles.input}
@@ -59,15 +55,11 @@ export default class Login extends Component {
               placeholder="Password"
               secureTextEntry
               style={styles.input}
-           
               secureTextEntry={this.state.showPassword}
-              
-              onChangeText={(password) => this.setState({ password })}>
-                  
-           
+              onChangeText={(password) => this.setState({ password })}>     
               </TextInput>
                   <TouchableOpacity activeOpacity={0.8} style={styles.touachableButton} onPress={this.setPasswordVisibility}>
-            <Image style={{height:20,width:20}} source={(this.state.hidePassword) ? require('../../images/eye.png') : require('../../images/hide.png')} style={styles.buttonImage} />
+            <Image style={{height:20,width:20}} source={(this.state.hidePassword) ? require('../../assets/images/eye.png') : require('../../assets/images/hide.png')} style={styles.buttonImage} />
           </TouchableOpacity>
       
           </View>
@@ -82,13 +74,11 @@ export default class Login extends Component {
             </View>
           </TouchableOpacity>
           </TouchableOpacity>
-        
-            
+       
             </View>
-      
+  
         <View style={styles.container} />
         </>
-    
     );
   }
 }
@@ -96,7 +86,7 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  
+
    
   },
   background: {

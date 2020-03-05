@@ -34,7 +34,7 @@ export default class Register extends Component {
 
         <Image
           style={{ height:100,width:102, marginHorizontal:150,marginVertical:71}}
-          source={require('../../assets/images/firstlogo-big.png')}
+          source={require('../../assets/images/logo.png')}
         />
 
      
@@ -67,8 +67,8 @@ export default class Register extends Component {
 
               </TextInput>
                   <TouchableOpacity activeOpacity={0.8} style={styles.touachableButton} onPress={this.setPasswordVisibility}>
-            <Image style={{height:20,width:20}} source={(this.state.hidePassword) ? require('../../images/eye.png') : require('../../images/hide.png')} style={styles.buttonImage} />
-          </TouchableOpacity>
+                  <Image style={{height:20,width:20}} source={(this.state.hidePassword) ? require('../../assets/images/eye.png') : require('../../assets/images/hide.png')} style={styles.buttonImage} />          
+                  </TouchableOpacity>
       
           </View>
           <TouchableOpacity activeOpacity={.5}>

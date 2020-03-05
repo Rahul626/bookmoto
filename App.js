@@ -8,6 +8,7 @@ import {
   StatusBar, Image, TouchableOpacity
 } from 'react-native';
 import { useScreens } from 'react-native-screens';
+import 'react-native-gesture-handler';
 
 
 
@@ -16,6 +17,7 @@ import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import { DrawerActions } from '@react-navigation/native';
+
 
 import locationA from './screens/maps/map';
 import Payments from './screens/payment/payment';
@@ -46,9 +48,7 @@ class NavigationDrawerStructure extends Component {
     };
   } 
   
-  //Structure for the navigatin Drawer
   toggleDrawer = () => {
-    //Props to open/close the drawer
     this.props.navigationProps.toggleDrawer();
   };
 
@@ -67,7 +67,7 @@ class NavigationDrawerStructure extends Component {
 
 
 const Payments_StackNavigator = createStackNavigator({
-  //All the screen from the Payments will be indexed here
+ 
   First: {
     screen: Payments,
     navigationOptions: ({ navigation }) => ({
@@ -82,8 +82,6 @@ const Payments_StackNavigator = createStackNavigator({
 });
 
 const Myrides_StackNavigator = createStackNavigator({
-  //All the screen from the Screen2 will be indexed here
-
 
   Myrides: {
     screen: Myrides,
@@ -99,7 +97,7 @@ const Myrides_StackNavigator = createStackNavigator({
 });
 
 const Settings_StackNavigator = createStackNavigator({
-  //All the screen from the Screen3 will be indexed here
+ 
   Settings: {
     screen: Settings,
     navigationOptions: ({ navigation }) => ({
@@ -114,7 +112,7 @@ const Settings_StackNavigator = createStackNavigator({
 });
 
 const Notification_StackNavigator = createStackNavigator({
-  //All the screen from the Screen3 will be indexed here
+
   Notification: {
     screen: Notification,
     navigationOptions: ({ navigation }) => ({
@@ -187,16 +185,6 @@ const Help_StackNavigator = createStackNavigator({
 
 
 const DrawerContent = createDrawerNavigator({
-  // map: {
-  //   //Title
-  //   screen: map,
-  //   navigationOptions: {
-  //     drawerLabel: 'map',
-  //     drawerIcon:()=>
-  //     (  <locationA  />)
-  //   },
-  // },
-
 
   Myrides: {
     
@@ -208,7 +196,7 @@ const DrawerContent = createDrawerNavigator({
     },
   },
   Payments: {
-    //Title
+   
     screen: Payments_StackNavigator,
     navigationOptions: {
       drawerLabel: 'Payments',
@@ -217,7 +205,7 @@ const DrawerContent = createDrawerNavigator({
     },
   },
   Settings: {
-    //Title
+
     screen: Settings_StackNavigator,
     navigationOptions: {
       drawerLabel: 'Settings',
@@ -237,7 +225,7 @@ const DrawerContent = createDrawerNavigator({
     },
   },
   Invite: {
-    //Title
+  
     screen: Invite_StackNavigator,
     navigationOptions: {
       drawerLabel:'Invite Friends',
@@ -247,7 +235,7 @@ const DrawerContent = createDrawerNavigator({
     },
   },
   Powerpass: {
-    //Title
+ 
     screen: Powerpass_StackNavigator,
     navigationOptions: {
       drawerLabel:' Power Pass',
