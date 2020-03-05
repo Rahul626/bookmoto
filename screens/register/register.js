@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,View,
-  Image,
+  Image,Button,
   TextInput, Switch,
   TouchableOpacity
 } from 'react-native';
 
- 
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import 'react-native-gesture-handler';
 
 export default class Register extends Component {
   constructor() {
@@ -25,32 +26,34 @@ export default class Register extends Component {
     return (
      <>
         <View style={styles.container} />
-
         <View >
-        <Text style={{backgroundColor:'transparent', textAlign:'center', fontSize:30}} >Welcome! Namaste!</Text>
+        <Text style={{backgroundColor:'transparent', textAlign:'center', fontSize:30}} >Namaste!</Text>
         <Text style={{backgroundColor:'transparent', textAlign:'center', fontSize:20}} >#1 BookMoto in India </Text>
-
         </View>
-
         <Image
           style={{ height:100,width:102, marginHorizontal:150,marginVertical:71}}
           source={require('../../assets/images/logo.png')}
         />
 
      
-     
         <View style={styles.wrapper}>
+        <View style={styles.inputWrap}> 
+            <TextInput
+              placeholder="Your name"
+              style={styles.input}
+              underlineColorAndroid="transparent"
+              numeric
+              keyboardType={'numeric'}>   
+              </TextInput>
+          </View>
           
-     
           <View style={styles.inputWrap}>
-           
             <TextInput
               placeholder="Enter Mobile Number"
               style={styles.input}
               underlineColorAndroid="transparent"
               numeric
-              keyboardType={'numeric'}>
-               
+              keyboardType={'numeric'}> 
               </TextInput>
     
           </View>
@@ -60,9 +63,7 @@ export default class Register extends Component {
               placeholder="Password"
               secureTextEntry
               style={styles.input}
-           
               secureTextEntry={this.state.showPassword}
-              
               onChangeText={(password) => this.setState({ password })}>
 
               </TextInput>
@@ -71,16 +72,18 @@ export default class Register extends Component {
                   </TouchableOpacity>
       
           </View>
-          <TouchableOpacity activeOpacity={.5}>
+          <TouchableOpacity activeOpacity={.5} onPress={() => {
+         alert('Registration Successful')
+        }} >
             <View style={styles.button}>
               <Text >Register</Text>
-            
             </View>
-            <TouchableOpacity activeOpacity={.5}>
+     
             <View >
-              <Text style={styles.forgotPasswordText}>Registered?login here</Text>
+            
+              <Text style={styles.forgotPasswordText}>Already registered? login here</Text>
             </View>
-          </TouchableOpacity>
+        
           </TouchableOpacity>
         
             
@@ -146,7 +149,8 @@ const styles = StyleSheet.create({
   forgotPasswordText: {
   
     backgroundColor: "transparent",
-    textAlign: "center"
+    textAlign: "center",
+    color:'#8700B1'
   }
 });
 

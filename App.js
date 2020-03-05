@@ -7,7 +7,8 @@ import {
   Text,
   StatusBar, Image, TouchableOpacity
 } from 'react-native';
-import { useScreens } from 'react-native-screens';
+
+
 import 'react-native-gesture-handler';
 
 
@@ -18,7 +19,6 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import { DrawerActions } from '@react-navigation/native';
 
-
 import locationA from './screens/maps/map';
 import Payments from './screens/payment/payment';
 import Myrides from './screens/myrides/myrides';
@@ -26,8 +26,8 @@ import Settings from './screens/settings/settings';
 import Notification from './screens/notification/notification';
 import Invite from './screens/invite/invite';
 import Insurance from './screens/insurance/insurance';
-import Help from './screens/insurance/insurance';
-import Powerpass from './screens/powerpass/powerpass';
+import Help from './screens/help/help';
+//import Powerpass from './screens/powerpass/powerpass';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import Iconpayment from 'react-native-vector-icons/MaterialIcons';
@@ -139,20 +139,20 @@ const Invite_StackNavigator = createStackNavigator({
     }),
   },
 });
-const Powerpass_StackNavigator = createStackNavigator({
+// const Powerpass_StackNavigator = createStackNavigator({
 
-  Powerpass: {
-    screen: Powerpass,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Powerpass  ',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-      headerStyle: {
-        backgroundColor: '#F9D815',height:60,
-      },
-      headerTintColor: '#fff',
-    }),
-  },
-});
+//   Powerpass: {
+//     screen: Powerpass,
+//     navigationOptions: ({ navigation }) => ({
+//       title: 'Powerpass  ',
+//       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+//       headerStyle: {
+//         backgroundColor: '#F9D815',height:60,
+//       },
+//       headerTintColor: '#fff',
+//     }),
+//   },
+// });
 
 const Insurance_StackNavigator = createStackNavigator({
   
@@ -234,16 +234,16 @@ const DrawerContent = createDrawerNavigator({
       
     },
   },
-  Powerpass: {
+  // Powerpass: {
  
-    screen: Powerpass_StackNavigator,
-    navigationOptions: {
-      drawerLabel:' Power Pass',
-      drawerIcon: ()=>
-      ( <Iconpass name="wallet" size={20} style={{backgroundColor:'red', color:'white',borderRadius:50}} />)
+  //   screen: Powerpass_StackNavigator,
+  //   navigationOptions: {
+  //     drawerLabel:' Power Pass',
+  //     drawerIcon: ()=>
+  //     ( <Iconpass name="wallet" size={20} style={{backgroundColor:'red', color:'white',borderRadius:50}} />)
       
-    },
-  },
+  //   },
+  // },
   Insurance: {
     
     screen:Insurance_StackNavigator,

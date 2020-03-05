@@ -5,7 +5,7 @@ import SearchBar from '../foot/searchbar';
 import CurrentLocation from  '../foot/currentLocation';
 //import RegisterScreen from '../auth/register/register';
 import { Container, Content, Card,  Text,Footer, FooterTab,Button } from 'native-base';
-import MapView from '../maps/map'
+
 
 export default class Main extends Component {
   render() {
@@ -13,8 +13,7 @@ export default class Main extends Component {
       <Container>
     
      
-        
-        <MapView/>
+  
         
      
         {/* <Icon name="my-location" size={20} style={{ textAlign:'right', marginRight:10, padding:5}} /> */}

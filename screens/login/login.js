@@ -6,6 +6,12 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import 'react-native-gesture-handler';
+import  Register from '../register/register'
+
+
 
  
 
@@ -63,7 +69,9 @@ export default class Login extends Component {
           </TouchableOpacity>
       
           </View>
-          <TouchableOpacity activeOpacity={.5}>
+          <TouchableOpacity activeOpacity={.5}  onPress={() => {
+         alert('Login Successful')
+        }}>
             <View style={styles.button}>
               <Text >Login</Text>
             
@@ -71,6 +79,8 @@ export default class Login extends Component {
             <TouchableOpacity activeOpacity={.5}>
             <View >
               <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+              
+            
             </View>
           </TouchableOpacity>
           </TouchableOpacity>

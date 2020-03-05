@@ -107,7 +107,7 @@ const slides = [
     title: "Don't pay everyday! Get a Power Pass",
     text: ' Multi kinds of Power Pass according to user!',
     image: require('../../assets/images/wallet.png'),
-    backgroundColor: '#3395ff',
+    backgroundColor: '#1E90FF',
   },
   {
     key: 's5',
