@@ -39,7 +39,7 @@ export default class Register extends Component {
         <View style={styles.wrapper}>
         <View style={styles.inputWrap}> 
             <TextInput
-              placeholder="Your name"
+              placeholder="   Your Name"
               style={styles.input}
               underlineColorAndroid="transparent"
               numeric
@@ -49,7 +49,7 @@ export default class Register extends Component {
           
           <View style={styles.inputWrap}>
             <TextInput
-              placeholder="Enter Mobile Number"
+              placeholder="   Mobile Number"
               style={styles.input}
               underlineColorAndroid="transparent"
               numeric
@@ -60,7 +60,7 @@ export default class Register extends Component {
           <View style={styles.inputWrap}>
     
             <TextInput
-              placeholder="Password"
+              placeholder="   Set  Password"
               secureTextEntry
               style={styles.input}
               secureTextEntry={this.state.showPassword}
@@ -121,7 +121,14 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 10,
     backgroundColor: '#FFF',
-    borderRadius:30
+    borderRadius:30,
+    borderStartWidth : 1,
+    borderEndWidth : 1,
+    borderTopWidth : 1,
+  borderLeftWidth:1,
+  borderRightWidth: 1,
+  borderBottomWidth : 1,
+  borderColor:'#F9D815'
   },
 
   button: {

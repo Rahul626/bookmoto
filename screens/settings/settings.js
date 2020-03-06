@@ -1,8 +1,14 @@
-//This is an example code for NavigationDrawer//
+
 import React, { Component } from 'react';
-//import react in our code.
 import { StyleSheet, View, Text, ScrollView,SafeAreaView , TouchableOpacity} from 'react-native';
 import { Container, Content, Button, ListItem, Left,Icon, Separator, Body } from 'native-base';
+
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import 'react-native-gesture-handler';
+
+
+
 
 import Accounticon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Favorite from 'react-native-vector-icons/MaterialIcons';
@@ -16,11 +22,14 @@ import HelpIcon from 'react-native-vector-icons/MaterialIcons';
 import Betaicon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Mailicon from 'react-native-vector-icons/AntDesign';
 import Info from 'react-native-vector-icons/Entypo';
+
+import Profile from '../settings/profile';
+
 export default class Settings extends Component {
-  //Screen3 Component
+
   render() {
     return (
-      <SafeAreaView >
+
       <ScrollView >
       <TouchableOpacity>
       <Container>
@@ -154,15 +163,26 @@ export default class Settings extends Component {
             </Body>
            
           </ListItem>
-          
-      
-          
+          <Button
+          title="Go to Details"
+          onPress={() => this.props.navigation.navigate('Profile')}
+        />          
         </Content>
       </Container>
       </TouchableOpacity>
       </ScrollView>
-    </SafeAreaView>
+
     );
   }
 }
  
+const AppNavigator = createStackNavigator({
+  Profile: {
+    screen: Profile,
+
+  },
+
+});
+
+
+ createAppContainer(AppNavigator);

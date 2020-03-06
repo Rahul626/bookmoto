@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { ListItem, Left, Body, Right, Thumbnail,Header } from 'native-base';
 
-const img = '../../assets/images/icon.jpeg';
+
 
 const DATA = [
   {
@@ -48,7 +48,8 @@ const DATA = [
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
     title: 'Ride quick! , save big',
-    message: "Use code 'pick50'  | TCA"
+    message: "Use code 'pick50'  | TCA",
+    time:"11:25pm"
   },
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
@@ -77,7 +78,8 @@ const DATA = [
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
     title: 'Skip Expence, use Rapido',
-    message: "Use code 'pick100'  | TCA"
+    message: "Use code 'pick100'  | TCA",
+    time:"11:45pm"
   },
   {
     id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
@@ -99,7 +101,7 @@ function Item({ id, title, message, time,selected, onSelect }) {
       onPress={() => onSelect(id)}>
       <ListItem avatar>
         <Left>
-          <Thumbnail style={{ width: 40, height: 40}} source={require('../../assets/images/icon.jpeg')} />
+          <Thumbnail style={{ width: 40, height: 40}} source={require('../../assets/images/logo.png')} />
         </Left>
         <Body>
           <Text>{title}</Text>
@@ -132,7 +134,11 @@ export default function Notification() {
     <ScrollView >  
 
     <SafeAreaView style={styles.container}>
-      <Header  style={{height:60, backgroundColor:'#F9D815'}}/>
+      <Header style={styles.HeaderInsideTextStyle} >
+
+
+        <Text style={styles.HeaderInsideTextStyle}>Notification</Text>
+      </Header>
       <FlatList
         data={DATA}
         renderItem={({ item }) => (
@@ -169,5 +175,14 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 32,
+  },
+  HeaderInsideTextStyle:
+  {
+    color: 'black',
+    fontSize: 25,
+  justifyContent: 'center',
+  textAlign:'center',
+  backgroundColor:'#F9D815'
+
   },
 });

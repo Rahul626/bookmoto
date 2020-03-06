@@ -8,12 +8,7 @@ import {
   StatusBar, Image, TouchableOpacity
 } from 'react-native';
 
-
 import 'react-native-gesture-handler';
-
-
-
-
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -27,7 +22,7 @@ import Notification from './screens/notification/notification';
 import Invite from './screens/invite/invite';
 import Insurance from './screens/insurance/insurance';
 import Help from './screens/help/help';
-//import Powerpass from './screens/powerpass/powerpass';
+import Powerpass from './screens/powerpass/powerpass';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import Iconpayment from 'react-native-vector-icons/MaterialIcons';
@@ -41,13 +36,13 @@ import Iconpass from 'react-native-vector-icons/Entypo';
 
 
 class NavigationDrawerStructure extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       isSideMenuOpen: false
     };
-  } 
-  
+  }
+
   toggleDrawer = () => {
     this.props.navigationProps.toggleDrawer();
   };
@@ -56,8 +51,8 @@ class NavigationDrawerStructure extends Component {
     return (
       <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity onPress={this.toggleDrawer.bind(this)}>
-          {/*Donute Button Image */}
-          <Icon name="md-menu" size={25} style={{ marginLeft: 15}} />
+       
+          <Icon name="md-menu" size={25} style={{ marginLeft: 15 }} />
         </TouchableOpacity>
       </View>
     );
@@ -67,11 +62,11 @@ class NavigationDrawerStructure extends Component {
 
 
 const Payments_StackNavigator = createStackNavigator({
- 
+
   First: {
     screen: Payments,
     navigationOptions: ({ navigation }) => ({
-      title: 'Payments Screen ',
+      title: 'Payments ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
         backgroundColor: '#F9D815',
@@ -86,7 +81,7 @@ const Myrides_StackNavigator = createStackNavigator({
   Myrides: {
     screen: Myrides,
     navigationOptions: ({ navigation }) => ({
-      title: 'Myrides Screen ',
+      title: 'Myrides ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
         backgroundColor: '#F9D815',
@@ -97,7 +92,7 @@ const Myrides_StackNavigator = createStackNavigator({
 });
 
 const Settings_StackNavigator = createStackNavigator({
- 
+
   Settings: {
     screen: Settings,
     navigationOptions: ({ navigation }) => ({
@@ -116,7 +111,7 @@ const Notification_StackNavigator = createStackNavigator({
   Notification: {
     screen: Notification,
     navigationOptions: ({ navigation }) => ({
-      title: 'Your Notifications ',
+      title: 'Notifications ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
         backgroundColor: '#F9D815',
@@ -126,7 +121,7 @@ const Notification_StackNavigator = createStackNavigator({
   },
 });
 const Invite_StackNavigator = createStackNavigator({
- 
+
   Invite: {
     screen: Invite,
     navigationOptions: ({ navigation }) => ({
@@ -139,23 +134,23 @@ const Invite_StackNavigator = createStackNavigator({
     }),
   },
 });
-// const Powerpass_StackNavigator = createStackNavigator({
+const Powerpass_StackNavigator = createStackNavigator({
 
-//   Powerpass: {
-//     screen: Powerpass,
-//     navigationOptions: ({ navigation }) => ({
-//       title: 'Powerpass  ',
-//       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-//       headerStyle: {
-//         backgroundColor: '#F9D815',height:60,
-//       },
-//       headerTintColor: '#fff',
-//     }),
-//   },
-// });
+  Powerpass: {
+    screen: Powerpass,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Powerpass  ',
+      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
+      headerStyle: {
+        backgroundColor: '#F9D815',height:60,
+      },
+      headerTintColor: '#fff',
+    }),
+  },
+});
 
 const Insurance_StackNavigator = createStackNavigator({
-  
+
   Insurance: {
     screen: Insurance,
     navigationOptions: ({ navigation }) => ({
@@ -173,7 +168,7 @@ const Help_StackNavigator = createStackNavigator({
   Help: {
     screen: Help,
     navigationOptions: ({ navigation }) => ({
-      title: 'Help Screen ',
+      title: 'Help ',
       headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
       headerStyle: {
         backgroundColor: '#F9D815',
@@ -187,21 +182,21 @@ const Help_StackNavigator = createStackNavigator({
 const DrawerContent = createDrawerNavigator({
 
   Myrides: {
-    
+
     screen: Myrides_StackNavigator,
-    navigationOptions: { 
+    navigationOptions: {
       drawerLabel: 'Myrides',
-      drawerIcon:()=>
-      (  <Returnride name="back-in-time" size={20} style={{backgroundColor:'#01a3a4', color:'white',borderRadius:50}} />)
+      drawerIcon: () =>
+        (<Returnride name="back-in-time" size={20} style={{ backgroundColor: '#01a3a4', color: 'white', borderRadius: 50 }} />)
     },
   },
   Payments: {
-   
+
     screen: Payments_StackNavigator,
     navigationOptions: {
       drawerLabel: 'Payments',
-      drawerIcon:()=>
-      (  <Iconpayment name="payment" size={20}  style={{backgroundColor:'#54a0ff', color:'white',borderRadius:50}} />)
+      drawerIcon: () =>
+        (<Iconpayment name="payment" size={20} style={{ backgroundColor: '#54a0ff', color: 'white', borderRadius: 50 }} />)
     },
   },
   Settings: {
@@ -209,62 +204,62 @@ const DrawerContent = createDrawerNavigator({
     screen: Settings_StackNavigator,
     navigationOptions: {
       drawerLabel: 'Settings',
-      drawerIcon: ()=>
-      ( <Mdsettings name="md-settings" size={20} style={{backgroundColor:'#ff9f43', color:'white',borderRadius:50}} />)
-      
+      drawerIcon: () =>
+        (<Mdsettings name="md-settings" size={20} style={{ backgroundColor: '#ff9f43', color: 'white', borderRadius: 50 }} />)
+
     },
   },
   Notification: {
-    //Title
+ 
     screen: Notification_StackNavigator,
     navigationOptions: {
-      drawerLabel:'Notifications',
-      drawerIcon: ()=>
-      ( <Notify name="ios-notifications-outline" size={20} style={{backgroundColor:'#00E5FF',width:20,height:20, color:'white',borderRadius:50}} />)
-      
+      drawerLabel: 'Notifications',
+      drawerIcon: () =>
+        (<Notify name="ios-notifications-outline" size={20} style={{ backgroundColor: '#00E5FF', width: 20, height: 20, color: 'white', borderRadius: 50 }} />)
+
     },
   },
   Invite: {
-  
+
     screen: Invite_StackNavigator,
     navigationOptions: {
-      drawerLabel:'Invite Friends',
-      drawerIcon: ()=>
-      ( <Gift name="ios-gift" size={20} style={{backgroundColor:'#8395a7',width:20, color:'white',borderRadius:50}} />)
-      
+      drawerLabel: 'Invite Friends',
+      drawerIcon: () =>
+        (<Gift name="ios-gift" size={20} style={{ backgroundColor: '#8395a7', width: 20, color: 'white', borderRadius: 50 }} />)
+
     },
   },
-  // Powerpass: {
- 
-  //   screen: Powerpass_StackNavigator,
-  //   navigationOptions: {
-  //     drawerLabel:' Power Pass',
-  //     drawerIcon: ()=>
-  //     ( <Iconpass name="wallet" size={20} style={{backgroundColor:'red', color:'white',borderRadius:50}} />)
-      
-  //   },
-  // },
+  Powerpass: {
+
+    screen: Powerpass_StackNavigator,
+    navigationOptions: {
+      drawerLabel:' Power Pass',
+      drawerIcon: ()=>
+      ( <Iconpass name="wallet" size={20} style={{backgroundColor:'red', color:'white',borderRadius:50}} />)
+
+    },
+  },
   Insurance: {
-    
-    screen:Insurance_StackNavigator,
+
+    screen: Insurance_StackNavigator,
     navigationOptions: {
       drawerLabel: 'Insurance',
-      drawerIcon: ()=>
-      ( <Insuicon name="security" size={20} style={{backgroundColor:'#795548', color:'white',borderRadius:50}} />)
-      
+      drawerIcon: () =>
+        (<Insuicon name="security" size={20} style={{ backgroundColor: '#795548', color: 'white', borderRadius: 50 }} />)
+
     },
   },
   Help: {
-    
+
     screen: Help_StackNavigator,
     navigationOptions: {
-      drawerLabel:' Help',
-      drawerIcon: ()=>
-      ( <HelpIcon name="help" size={20} style={{backgroundColor:'#00E5FF', color:'white',borderRadius:50}} />)
-      
+      drawerLabel: ' Help',
+      drawerIcon: () =>
+        (<HelpIcon name="help" size={20} style={{ backgroundColor: '#00E5FF', color: 'white', borderRadius: 50 }} />)
+
     },
   },
- 
+
 });
 
 

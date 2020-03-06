@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,View,
-  Image,Button,
+  Text, View,
+  Image, Button,
   TextInput,
   TouchableOpacity
 } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+
 import 'react-native-gesture-handler';
-import  Register from '../register/register'
+import Register from '../register/register'
 
-
-
- 
 
 export default class Login extends Component {
   constructor() {
@@ -28,67 +24,67 @@ export default class Login extends Component {
 
   render() {
     return (
-     <>
+      <>
         <View style={styles.container} />
 
         <View >
-        <Text style={{backgroundColor:'transparent', textAlign:'center', fontSize:30}} >Welcome Back!</Text>
-        <Text style={{backgroundColor:'transparent', textAlign:'center', fontSize:20}} >#1 BookMoto in India </Text>
+          <Text style={{ backgroundColor: 'transparent', textAlign: 'center', fontSize: 30 }} >Welcome Back!</Text>
+          <Text style={{ backgroundColor: 'transparent', textAlign: 'center', fontSize: 20 }} >#1 BookMoto in India </Text>
 
         </View>
 
         <Image
-          style={{ height:100,width:102, marginHorizontal:150,marginVertical:71,Color: "#F9D815"}}
+          style={{ height: 100, width: 102, marginHorizontal: 150, marginVertical: 71, Color: "#F9D815" }}
           source={require('../../assets/images/logo.png')}
         />
-          
+
         <View style={styles.wrapper}>
           <View style={styles.inputWrap}>
-      
+
             <TextInput
-              placeholder="Registered Mobile Number"
+              placeholder="  Registered Mobile Number"
               style={styles.input}
               underlineColorAndroid="transparent"
               numeric
               keyboardType={'numeric'}>
-                  
-              </TextInput>
-    
+
+            </TextInput>
+
           </View>
           <View style={styles.inputWrap}>
-    
+
             <TextInput
-              placeholder="Password"
+              placeholder="   Password"
               secureTextEntry
               style={styles.input}
               secureTextEntry={this.state.showPassword}
-              onChangeText={(password) => this.setState({ password })}>     
-              </TextInput>
-                  <TouchableOpacity activeOpacity={0.8} style={styles.touachableButton} onPress={this.setPasswordVisibility}>
-            <Image style={{height:20,width:20}} source={(this.state.hidePassword) ? require('../../assets/images/eye.png') : require('../../assets/images/hide.png')} style={styles.buttonImage} />
-          </TouchableOpacity>
-      
+              onChangeText={(password) => this.setState({ password })}>
+            </TextInput>
+            <TouchableOpacity activeOpacity={0.8} style={styles.touachableButton} onPress={this.setPasswordVisibility}>
+              <Image style={{ height: 20, width: 20 }} source={(this.state.hidePassword) ? require('../../assets/images/eye.png') : require('../../assets/images/hide.png')} style={styles.buttonImage} />
+            </TouchableOpacity>
+
           </View>
-          <TouchableOpacity activeOpacity={.5}  onPress={() => {
-         alert('Login Successful')
-        }}>
+          <TouchableOpacity activeOpacity={.5} onPress={() => {
+            alert('Login Successful')
+          }}>
             <View style={styles.button}>
               <Text >Login</Text>
-            
+
             </View>
             <TouchableOpacity activeOpacity={.5}>
-            <View >
-              <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-              
-            
-            </View>
+              <View >
+                <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+
+
+              </View>
+            </TouchableOpacity>
           </TouchableOpacity>
-          </TouchableOpacity>
-       
-            </View>
-  
+
+        </View>
+
         <View style={styles.container} />
-        </>
+      </>
     );
   }
 }
@@ -97,7 +93,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
 
-   
+
   },
   background: {
     width: null,
@@ -111,13 +107,20 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     height: 40,
     backgroundColor: "transparent",
-   
+    
+
   },
   input: {
     flex: 1,
     paddingHorizontal: 10,
     backgroundColor: '#FFF',
-    borderRadius:30
+    borderRadius: 30,   borderStartWidth : 1,
+    borderEndWidth : 1,
+    borderTopWidth : 1,
+  borderLeftWidth:1,
+  borderRightWidth: 1,
+  borderBottomWidth : 1,
+  borderColor:'#F9D815'
   },
 
   button: {
@@ -126,14 +129,14 @@ const styles = StyleSheet.create({
     marginVertical: 15,
     alignItems: "center",
     justifyContent: "center",
-    borderRadius:30
+    borderRadius: 30
   },
 
   buttonImage: {
     resizeMode: 'contain',
     height: '100%',
     width: '100%',
-    
+
   },
   touachableButton: {
     position: 'absolute',
@@ -143,7 +146,7 @@ const styles = StyleSheet.create({
     padding: 2
   },
   forgotPasswordText: {
-  
+
     backgroundColor: "transparent",
     textAlign: "center"
   }

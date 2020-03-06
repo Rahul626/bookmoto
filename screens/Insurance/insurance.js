@@ -1,19 +1,59 @@
 import React, { Component } from 'react';
-import { View, Button, Dimensions , ScrollView, SafeAreaView} from 'react-native';
+import { View, Button,StyleSheet, Dimensions , ScrollView,Animated, SafeAreaView,Linking} from 'react-native';
 import { List, ListItem, Left, Card, CardItem, Text, Body, Icon, Right } from 'native-base';
 import Boardicon from 'react-native-vector-icons/Feather';
 import PlusIcon from 'react-native-vector-icons/FontAwesome';
 import Personalaccident from 'react-native-vector-icons/MaterialCommunityIcons';
 
+
+
 var { height, width } = Dimensions.get('window');
+const Header_Maximum_Height = 180;
+
+const Header_Minimum_Height = 10;
 
 export default class Insurance extends Component {
+  constructor() {
+    super();
+
+    this.AnimatedHeaderValue = new Animated.Value(0);
+
+  }
 
   render() {
+    
+    {
+
+      const AnimateHeaderBackgroundColor = this.AnimatedHeaderValue.interpolate(
+        {
+          inputRange: [0, (Header_Maximum_Height - Header_Minimum_Height)],
+
+          outputRange: ['#F9D815', '#F9D815'],
+
+          extrapolate: 'clamp'
+        });
+
+      const AnimateHeaderHeight = this.AnimatedHeaderValue.interpolate(
+        {
+          inputRange: [0, (Header_Maximum_Height - Header_Minimum_Height)],
+
+          outputRange: [Header_Maximum_Height, Header_Minimum_Height],
+
+          extrapolate: 'clamp'
+        });
     return (
-      <SafeAreaView >
-      <ScrollView >
-      <View >
+      <View style={styles.MainContainer}>
+      <ScrollView
+
+        scrollEventThrottle={10}
+
+        contentContainerStyle={{ paddingTop: Header_Maximum_Height }}
+
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: this.AnimatedHeaderValue } } }]
+        )}>
+  
+     
         <Card>
           <CardItem header bordered style={{ backgroundColor: 'lightgrey' }}>
             <Text>Policy coverage</Text>
@@ -95,17 +135,60 @@ export default class Insurance extends Component {
           <Text style={{ fontSize: 20, fontWeight: '300', color: 'yellow' }}>CLAIM INSURANCE</Text>
           
         </View>
-        <Text style={{margin:10, paddingRight:20}}>powered_by_jamal</Text>
-       
+        <Text style={{margin:10, paddingRight:20}}>powered_by</Text>
+        <Text style={{ color: 'blue',marginRight:10, paddingHorizontal:60 }}
+          onPress={() => {
+            //on clicking we are going to open the URL using Linking
+            Linking.openURL('https://twitter.com/iam_rahul_rj');
+          }}>
+        jamal
+        </Text>
+        </ScrollView>
+          <Animated.View style={[styles.HeaderStyle, { height: AnimateHeaderHeight, backgroundColor: AnimateHeaderBackgroundColor }]}>
+
+            <Text style={styles.HeaderInsideTextStyle}>Insurance</Text>
+
+          </Animated.View>
 
 
 
 
-      </View>
-      </ScrollView>
-    </SafeAreaView>
+        </View>
 
     );
   }
 }
+}
+
+const styles = StyleSheet.create(
+  {
+    MainContainer:
+    {
+      flex: 1,
+      paddingTop: (Platform.OS == 'ios') ? 20 : 0
+    },
+
+    HeaderStyle:
+    {
+      justifyContent: 'center',
+      position: 'absolute',
+      left: 0,
+      right: 0,
+
+      top: (Platform.OS == 'ios') ? 20 : 0,
+    },
+
+    HeaderInsideTextStyle:
+    {
+      color: 'black',
+      fontSize: 25,
+    justifyContent: 'center',
+    textAlign:'center'
+
+    },
+
+  
+  });
+
+
 

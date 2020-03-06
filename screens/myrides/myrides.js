@@ -1,45 +1,130 @@
 import React, { Component } from 'react'
-import { Text, View, TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, View, TouchableOpacity, ScrollView, StyleSheet,Animated, } from 'react-native'
 import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body,Right } from 'native-base';
 
 import Locationicon from 'react-native-vector-icons/SimpleLineIcons';
 import Desticon from 'react-native-vector-icons/FontAwesome';
+const Header_Maximum_Height = 200;
+
+const Header_Minimum_Height = 50;
 
 
 export default class Myrides extends Component {
+  constructor() {
+    super();
+
+    this.AnimatedHeaderValue = new Animated.Value(0);
+
+  }
   state = {
     rides: [
       {
         id: 0,
-        pickup: 'Bangalore',
-        dest:'hyderabad'
+        pickup: 'Howrah Bridge,kolkata',
+        dest:'Jorasanko Thakurbari,kolkata',
+        amount:120,
       },
       {
         id: 1,
-        pickup: 'kolkata',
-        dest:'Howrah'
+        pickup: 'Park Street,kolkata',
+        dest:'Howrah, kolkata',
+        amount:110,
       },
       {
         id: 2,
-        pickup: 'Delhi',
-        dest:'hydearabad'
+        pickup: 'Indian Museum, kolkata',
+        dest:'Marble Palace Mansion ,kolkata',
+        amount:108,
       },
       {
         id: 3,
-        pickup: 'Panjab',
-        dest:'kolkata'
-      }
+        pickup: 'Calcutta Racecourse ,kolkata',
+        dest:'Eden Gardens,kolkata',
+        amount:137,
+      },
+      {
+        id: 4,
+        pickup: 'Marble Palace Mansion,kolkata',
+        dest:'Victoria Memorial,kolkata',
+        amount:98,
+      },
+      {
+        id: 5,
+        pickup: 'Indian Museum,kolkata',
+        dest:'Victoria Memorial,kolkata',
+        amount:159,
+      },
+      {
+        id: 6,
+        pickup: 'Calcutta Racecourse ,kolkata',
+        dest:'Eden Gardens,kolkata',
+        amount:120,
+      },
+      {
+        id: 7,
+        pickup: 'Indian Museum,kolkata',
+        dest:'Calcutta Racecourse ,kolkata',
+        amount:90,
+      },
+      {
+        id: 8,
+        pickup: 'Howrah Bridge,kolkata',
+        dest:'Jorasanko Thakurbari,kolkata',
+        amount:130,
+      },
+      {
+        id: 9,
+        pickup: 'Marble Palace Mansion,kolkata',
+        dest:'Victoria Memorial,kolkata',
+        amount:111,
+      },
+      {
+        id: 10,
+        pickup: 'Calcutta Racecourse ,kolkata',
+        dest:'Eden Gardens,kolkata',
+        amount:129
+      },
+      
     ]
   }
  
   render() {
+    {
+
+      const AnimateHeaderBackgroundColor = this.AnimatedHeaderValue.interpolate(
+        {
+          inputRange: [0, (Header_Maximum_Height - Header_Minimum_Height)],
+
+          outputRange: ['#F9D815', '#F9D815'],
+
+          extrapolate: 'clamp'
+        });
+
+      const AnimateHeaderHeight = this.AnimatedHeaderValue.interpolate(
+        {
+          inputRange: [0, (Header_Maximum_Height - Header_Minimum_Height)],
+
+          outputRange: [Header_Maximum_Height, Header_Minimum_Height],
+
+          extrapolate: 'clamp'
+        });
     return (
+      <View style={styles.MainContainer}>
+      <ScrollView
+
+        scrollEventThrottle={10}
+
+        contentContainerStyle={{ paddingTop: Header_Maximum_Height }}
+
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: this.AnimatedHeaderValue } } }]
+        )}>
+  
       <View>
         {
           this.state.rides.map((item, index) => (
             <TouchableOpacity
-              key={item.id}
-              onPress={() => this.alertItemName(item)}>
+           >
               <Card style={{ flex: 0 ,}}>
                 <CardItem style={{height:100}}>
                   <Left>
@@ -49,11 +134,14 @@ export default class Myrides extends Component {
                       </Text>
                     </Left>
                       <Body>
+                        
                        </Body>
                        <Right>
                        
-                      
-                       <Text>
+                    
+                      <Text>Paid:&#8377;{item.amount} </Text>
+                        
+                      <Text>
                         {item.dest}
                       </Text>
                       <Desticon name="map-pin" size={20}s style={{color:'#e8410e'}} />
@@ -64,106 +152,55 @@ export default class Myrides extends Component {
           ))
         }
       </View>
+    
+      </ScrollView>
+          <Animated.View style={[styles.HeaderStyle, { height: AnimateHeaderHeight, backgroundColor: AnimateHeaderBackgroundColor }]}>
+
+            <Text style={styles.HeaderInsideTextStyle}>My Rides</Text>
+
+          </Animated.View>
+
+
+
+
+        </View>
+
     )
   }
 }
 
+}
+
+const styles = StyleSheet.create(
+  {
+    MainContainer:
+    {
+      flex: 1,
+      paddingTop: (Platform.OS == 'ios') ? 20 : 0
+    },
+
+    HeaderStyle:
+    {
+      justifyContent: 'center',
+
+      position: 'absolute',
+      left: 0,
+      right: 0,
+
+      top: (Platform.OS == 'ios') ? 20 : 0,
+    },
+
+    HeaderInsideTextStyle:
+    {
+      color: 'black',
+      fontSize: 25,
+   justifyContent: 'center',
+   textAlign:'center'
+
+    },
+
+  
+  });
 
 
-// import React from "react";
-// import { FlatList } from "react-native";
-// import { Text, ListItem, Left, Body, Icon, Right, Title } from "native-base";
-// export default class Myrides extends React.Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       data: [
-//         { name: "Movies", header: true },
-//         { name: "Interstellar", header: false },
-//         { name: "Dark Knight", header: false },
-//         { name: "Pop", header: false },
-//         { name: "Interstellar", header: false },
-//         { name: "Dark Knight", header: false },
-//         { name: "Pop", header: false },
-//         { name: "Interstellar", header: false },
-//         { name: "Dark Knight", header: false },
-//         { name: "Pop", header: false },
-//         { name: "Interstellar", header: false },
-//         { name: "Dark Knight", header: false },
-//         { name: "Pop", header: false },
-//         { name: "Pulp Fiction", header: false },
-//         { name: "Burning Train", header: false },
-//         { name: "Music", header: true },
-//         { name: "Adams", header: false },
-//         { name: "Nirvana", header: false },
-//         { name: "Amrit Maan", header: false },
-//         { name: "Oye Hoye", header: false },
-//         { name: "Eminem", header: false },
-//         { name: "Places", header: true },
-//         { name: "Jordan", header: false },
-//         { name: "Punjab", header: false },
-//         { name: "Ludhiana", header: false },
-//         { name: "Jamshedpur", header: false },
-//         { name: "India", header: false },
-//         { name: "People", header: true },
-//         { name: "Jazzy", header: false },
-//         { name: "Appie", header: false },
-//         { name: "Baby", header: false },
-//         { name: "Sunil", header: false },
-//         { name: "Arrow", header: false },
-//         { name: "Things", header: true },
-//         { name: "table", header: false },
-//         { name: "chair", header: false },
-//         { name: "fan", header: false },
-//         { name: "cup", header: false },
-//         { name: "cube", header: false }
-//       ],
-//       stickyHeaderIndices: []
-//     };
-//   }
-//   componentWillMount() {
-//     var arr = [];
-//     this.state.data.map(obj => {
-//       if (obj.header) {
-//         arr.push(this.state.data.indexOf(obj));
-//       }
-//     });
-//     arr.push(0);
-//     this.setState({
-//       stickyHeaderIndices: arr
-//     });
-//   }
-//   renderItem = ({ item }) => {
-//     if (item.header) {
-//       return (
-//         <ListItem itemDivider>
-//           <Left />
-//           <Body style={{ marginRight: 40 }}>
-//             <Text style={{ fontWeight: "bold" }}>
-//               {item.name}
-//             </Text>
-//           </Body>
-//           <Right />
-//         </ListItem>
-//       );
-//     } else if (!item.header) {
-//       return (
-//         <ListItem style={{ marginLeft: 0 }}>
-//           <Body>
-//             <Text>{item.name}</Text>
-//           </Body>
-//         </ListItem>
-//       );
-//     }
-//   };
-//   render() {
-//     return (
-//       <FlatList
-//         data={this.state.data}
-//         renderItem={this.renderItem}
-//         keyExtractor={item => item.name}
-//         stickyHeaderIndices={this.state.stickyHeaderIndices}
-//       />
-//     );
-//   }
-// }
+
