@@ -6,10 +6,9 @@ import {
   TextInput, Switch,
   TouchableOpacity
 } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import 'react-native-gesture-handler';
+
 
 export default class Register extends Component {
   constructor() {
@@ -43,6 +42,7 @@ export default class Register extends Component {
               style={styles.input}
               underlineColorAndroid="transparent"
               numeric
+              maxLength = {10}
               keyboardType={'numeric'}>   
               </TextInput>
           </View>

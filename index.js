@@ -9,16 +9,13 @@ import App from './App';
 //import Main from './screens/main/main';
 import {name as appName} from './app.json';
  //import LocationA from './screens/maps/map';
- import Powerpass from './screens/powerpass/powerpass'
+ //import Powerpass from './screens/powerpass/powerpass'
 //import Welcome from './screens/welcome/welcome';
-// import Login from './screens/login/login';
-import Register from './screens/register/register';
-//import Preference from './screens/settings/preference';
-//import Routes from './route';
-//import Profile from './screens/settings/profile'
+ //import Login from './screens/login/login';
+
 //import Forgot from './screens/login/forgot';
+import Router from './router';
 
-import Help from './screens/help/help';
+//import Powerpass from './screens/powerpass/powerpass'
 
-
-AppRegistry.registerComponent(appName, () =>Register);
+AppRegistry.registerComponent(appName, () =>App);

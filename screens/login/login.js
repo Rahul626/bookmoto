@@ -7,8 +7,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-import 'react-native-gesture-handler';
-import Register from '../register/register'
+
 
 
 export default class Login extends Component {
@@ -44,6 +43,7 @@ export default class Login extends Component {
             <TextInput
               placeholder="  Registered Mobile Number"
               style={styles.input}
+               maxLength = {10}
               underlineColorAndroid="transparent"
               numeric
               keyboardType={'numeric'}>

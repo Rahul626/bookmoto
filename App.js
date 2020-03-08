@@ -8,11 +8,14 @@ import {
   StatusBar, Image, TouchableOpacity
 } from 'react-native';
 
+
 import 'react-native-gesture-handler';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
-import { DrawerActions } from '@react-navigation/native';
+
+//import { DrawerActions } from 'react-nav';
+
 
 import locationA from './screens/maps/map';
 import Payments from './screens/payment/payment';
@@ -43,18 +46,21 @@ class NavigationDrawerStructure extends Component {
     };
   }
 
+
   toggleDrawer = () => {
     this.props.navigationProps.toggleDrawer();
   };
-
   render() {
     return (
       <View style={{ flexDirection: 'row' }}>
         <TouchableOpacity onPress={this.toggleDrawer.bind(this)}>
+      
        
           <Icon name="md-menu" size={25} style={{ marginLeft: 15 }} />
+   
         </TouchableOpacity>
       </View>
+      
     );
   }
 }
@@ -63,7 +69,7 @@ class NavigationDrawerStructure extends Component {
 
 const Payments_StackNavigator = createStackNavigator({
 
-  First: {
+  Payments: {
     screen: Payments,
     navigationOptions: ({ navigation }) => ({
       title: 'Payments ',
@@ -180,6 +186,8 @@ const Help_StackNavigator = createStackNavigator({
 
 
 const DrawerContent = createDrawerNavigator({
+  
+
 
   Myrides: {
 
@@ -258,9 +266,10 @@ const DrawerContent = createDrawerNavigator({
         (<HelpIcon name="help" size={20} style={{ backgroundColor: '#00E5FF', color: 'white', borderRadius: 50 }} />)
 
     },
-  },
+  }
 
 });
+
 
 
 export default createAppContainer(DrawerContent);
