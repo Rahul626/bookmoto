@@ -163,10 +163,7 @@ export default class Settings extends Component {
             </Body>
            
           </ListItem>
-          <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Profile')}
-        />          
+           
         </Content>
       </Container>
       </TouchableOpacity>

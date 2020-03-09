@@ -10,6 +10,7 @@ import {
 
 
 
+
 export default class Login extends Component {
   constructor() {
     super();
@@ -65,21 +66,15 @@ export default class Login extends Component {
             </TouchableOpacity>
 
           </View>
-          <TouchableOpacity activeOpacity={.5} onPress={() => {
+          {/* <TouchableOpacity activeOpacity={.5} onPress={() => {
             alert('Login Successful')
           }}>
             <View style={styles.button}>
               <Text >Login</Text>
 
             </View>
-            <TouchableOpacity activeOpacity={.5}>
-              <View >
-                <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
-
-
-              </View>
-            </TouchableOpacity>
-          </TouchableOpacity>
+          
+          </TouchableOpacity> */}
 
         </View>
 

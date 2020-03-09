@@ -10,19 +10,19 @@ import { ListItem, Left, Body, Right, Thumbnail,Header } from 'native-base';
 
 const DATA = [
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28a',
     title: 'Ride quick! , save big',
     message: "Use code 'pick50'  | TCA",
     time:"3:45pm"
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa9763',
     title: 'Skip Expence, use Rapido',
     message: "Use code 'pick100'  | TCA",
     time:"2:45pm"
   },
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad3abb28ba',
     title: 'Ride quick! , save big',
     message: "Use code 'pick50'  | TCA",
     time:"1:40pm"
@@ -34,13 +34,13 @@ const DATA = [
     time:"12:45pm"
   },
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    id: 'bd7acbea--46c2-aed5-3ad53abb28ba',
     title: 'Ride quick! , save big',
     message: "Use code 'pick50'  | TCA",
     time:"11:45pm"
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    id: '3ac68afc-c60-48d3-a4f8-fbd91aa97f63',
     title: 'Skip Expence, use Rapido',
     message: "Use code 'pick100'  | TCA",
     time:"3:45pm"
@@ -64,31 +64,31 @@ const DATA = [
     time:"8:45pm"
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    id: '3ac68afc-c605-48d3-a4f8-fbd91aa7f63',
     title: 'Skip Expence, use Rapido',
     message: "Use code 'pick10'  | TCA",
     time:"3:45pm"
   },
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53ab28ba',
     title: 'Ride quick! , save big',
     message: "Use code 'pick20'  | TCA", 
     time:"9:45pm"
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    id: '3ac68afc-c05-48d3-a4f8-fbd91aa97f63',
     title: 'Skip Expence, use Rapido',
     message: "Use code 'pick100'  | TCA",
     time:"11:45pm"
   },
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    id: 'bd7acbea-c1b1-46c2-aed5-3adabb28ba',
     title: 'Ride quick! , save big',
     message: "Use code 'pick50'  | TCA",
     time:"6:45pm"
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    id: '3ac68afc-c605-48d-a4f8-fbd91aa97f63',
     title: 'Skip Expence, use Rapido',
     message: "Use code 'pick100'  | TCA",
     time:"5:45pm"
@@ -97,7 +97,7 @@ const DATA = [
 
 function Item({ id, title, message, time,selected, onSelect }) {
   return (
-    <TouchableOpacity
+    <TouchableOpacity  key={id}
       onPress={() => onSelect(id)}>
       <ListItem avatar>
         <Left>
@@ -143,6 +143,7 @@ export default function Notification() {
         data={DATA}
         renderItem={({ item }) => (
           <Item
+          key={item.id}
             id={item.id}
             title={item.title}
             message={item.message}
@@ -164,7 +165,8 @@ export default function Notification() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+   
 
   },
   item: {

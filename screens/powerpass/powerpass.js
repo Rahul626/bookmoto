@@ -127,9 +127,9 @@ export default class Powerpass extends Component {
               <TouchableOpacity>
               <Text style={{textAlign:'center', paddingTop:30, color:'blue', marginBottom:20}} onPress={() => Linking.openURL('http://google.com')} >Terms and Conditions</Text>
               <View style={styles.button} onPress={() => {
-         alert('Registration Successful')
+         alert('Ridecting to you payments page')
         }}>
-              <Text style={{color:'#F9D815', fontSize:20}} >BUY PASS</Text>
+              <Text style={{color:'black', fontSize:20}} >BUY PASS</Text>
            
             </View>
            
@@ -187,10 +187,10 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS == 'ios' ? 20 : 0,
   },
   button: {
-    backgroundColor: "black",
+    backgroundColor: "#F9D815",
     paddingVertical: 15,
   
-    height:40,
+    height:36,
     alignItems: "center",
     justifyContent: "center",
     borderRadius:30

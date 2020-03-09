@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
-import { Image , View,ScrollView, StyleSheet,Animated,Text } from 'react-native';
+import { Image , View,ScrollView, StyleSheet,Animated,Text ,  Share, Linking  } from 'react-native';
 import { Container, Content, Card, CardItem, Thumbnail, Icon, Left,Button, Body,Right } from 'native-base';
 
 import Whatsappicon from 'react-native-vector-icons/MaterialCommunityIcons';
-const Header_Maximum_Height = 200;
+const Header_Maximum_Height = 150;
 
-const Header_Minimum_Height = 50;
+const Header_Minimum_Height = 30;
 
 
+const shareOptions = {
+  title: 'RideApp devoloped by Jamal',
+  message: 'Thanks for Sharing my app...find me on github https://github.com/Rahul626 ', // Note that according to the documentation at least one of "message" or "url" fields is required
+  url: 'https://github.com/Rahul626',
+  subject: 'Share with friends'
+};
 
 export default class Invite extends Component {
+  onSharePress = () => Share.share(shareOptions);
   constructor() {
     super();
 
@@ -88,12 +95,12 @@ export default class Invite extends Component {
         <View style={{flexDirection: 'row', justifyContent: 'space-evenly',
         padding:10}}>
 
-        <Button style={{justifyContent:'center', width:180, borderRadius:50, marginHorizontal:5}} iconLeft transparent bordered >
+        <Button onPress={this.onSharePress} style={{justifyContent:'center', width:180, borderRadius:50, marginHorizontal:5}} iconLeft transparent bordered >
             <Icon name='share' onPress = { () => { console.log("Button pressed!")} } />
             <Text style={{padding:5, textAlign:'center'}} >Others</Text>
           </Button>
 
-          <Button style={{justifyContent:'center',backgroundColor:'#4DC85D', width:180, borderRadius:50, marginHorizontal:5}} iconLeft transparent >
+          <Button onPress={this.onSharePress} style={{justifyContent:'center',backgroundColor:'#4DC85D', width:180, borderRadius:50, marginHorizontal:5}} iconLeft transparent >
             <Whatsappicon name='whatsapp' size={20}   onPress = { () => { console.log("Button pressed!")} } />
             <Text style={{padding:5, textAlign:'center'}} >WhatsApp</Text>
           </Button>

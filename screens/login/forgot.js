@@ -6,6 +6,8 @@ import {
   TextInput,
   TouchableOpacity
 } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
 import  Register from '../register/register'
 
@@ -59,7 +61,7 @@ export default class Login extends Component {
             <TouchableOpacity activeOpacity={.5}>
             <View style={{borderRadius:30, alignItems: "center",
     justifyContent: "center",backgroundColor:'#C0C0C0',  paddingVertical: 15,
-    marginVertical: 15,}}>
+    marginVertical: 15,}}  onPress={() => this.props.navigation.navigate('Register')} >
               <Text style={styles.forgotPasswordText} >login here</Text>
               
             
