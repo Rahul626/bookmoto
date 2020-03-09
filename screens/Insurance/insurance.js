@@ -135,11 +135,10 @@ export default class Insurance extends Component {
           <Text style={{ fontSize: 20, fontWeight: '300', color: 'yellow' }}>CLAIM INSURANCE</Text>
           
         </View>
-        <Text style={{margin:10, paddingRight:20}}>powered_by</Text>
+        <Text style={{margin:10, paddingRight:20}}>prepared_by</Text>
         <Text style={{ color: 'blue',marginRight:10, paddingHorizontal:60 }}
           onPress={() => {
-            //on clicking we are going to open the URL using Linking
-            Linking.openURL('https://twitter.com/iam_rahul_rj');
+            Linking.openURL('https://www.linkedin.com/in/jamaluddin-mondal-00630310b');
           }}>
         jamal
         </Text>

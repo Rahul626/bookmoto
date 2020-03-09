@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Content, List, ListItem,Button, Left, Body, Right, Thumbnail,Separator} from 'native-base';
 import { Text, View,ScrollView, TouchableOpacity, StyleSheet,Animated, Linking } from 'react-native';
-const Header_Maximum_Height = 200;
+const Header_Maximum_Height = 180;
 
 const Header_Minimum_Height = 30;
 

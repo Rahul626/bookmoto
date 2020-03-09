@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
-  View,
   Text,
-  StatusBar, Image, TouchableOpacity
+  View,
+  Image,Button,
+  FlatList,
+  TouchableOpacity,
 } from 'react-native';
+import {NativeModules} from 'react-native';
 
 
-import 'react-native-gesture-handler';
-import { createAppContainer } from 'react-navigation';
-import { createDrawerNavigator } from 'react-navigation-drawer';
-import { createStackNavigator } from 'react-navigation-stack';
-
-//import { DrawerActions } from 'react-nav';
+import {createAppContainer} from 'react-navigation';
+import {createDrawerNavigator} from 'react-navigation-drawer';
+import {createStackNavigator} from 'react-navigation-stack';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
-import locationA from './screens/maps/map';
 import Payments from './screens/payment/payment';
 import Myrides from './screens/myrides/myrides';
 import Settings from './screens/settings/settings';
@@ -26,250 +24,226 @@ import Invite from './screens/invite/invite';
 import Insurance from './screens/insurance/insurance';
 import Help from './screens/help/help';
 import Powerpass from './screens/powerpass/powerpass';
+import Main from  './screens/main/main';
 
-import Icon from 'react-native-vector-icons/Ionicons';
-import Iconpayment from 'react-native-vector-icons/MaterialIcons';
-import Returnride from 'react-native-vector-icons/Entypo';
-import Mdsettings from 'react-native-vector-icons/Ionicons';
-import Notify from 'react-native-vector-icons/Ionicons';
-import Gift from 'react-native-vector-icons/Ionicons';
-import HelpIcon from 'react-native-vector-icons/MaterialIcons';
-import Insuicon from 'react-native-vector-icons/MaterialIcons';
-import Iconpass from 'react-native-vector-icons/Entypo';
+const Header = ({name, openDrawer}) => (
+  <View style={styles.header}>
+    <TouchableOpacity onPress={() => openDrawer()}>
+      <Icon name="md-menu" size={25} style={{marginLeft: 15}} />
+    </TouchableOpacity>
 
+    <Text style={{width: 50}}></Text>
+  </View>
+);
+const Home = ({navigation}) => (
+  <>
+    <Header name="Home" openDrawer={navigation.openDrawer} />
+    <Main />
+  </>
+);
+const PaymentsScreen = ({navigation}) => (
+  <>
+    <Header name="Payments" openDrawer={navigation.openDrawer} />
+    <Payments />
+  </>
+);
+const RidesScreen = ({navigation}) => (
+  <>
+    <Header name="My Rides" openDrawer={navigation.openDrawer} />
+    <Myrides />
+  </>
+);
+const InvitesScreen = ({navigation}) => (
+  <>
+    <Header name="Invite Friends" openDrawer={navigation.openDrawer} />
+    <Invite />
+  </>
+);
+const PowerpassScreen = ({navigation}) => (
+  <>
+    <Header name="Power Pass" openDrawer={navigation.openDrawer} />
+    <Powerpass />
+  </>
+);
+const NotificationScreen = ({navigation}) => (
+  <>
+    <Header name="Notifications" openDrawer={navigation.openDrawer} />
+    <Notification />
+  </>
+);
+const InsuranceScreen = ({navigation}) => (
+  <>
+    <Header name="Insurance" openDrawer={navigation.openDrawer} />
+    <Insurance />
+  </>
+);
+const SettingsScreen = ({navigation}) => (
+  <>
+    <Header name="Settings" openDrawer={navigation.openDrawer} />
+    <Settings />
+ 
+  </>
+);
+const HelpScreen = ({navigation}) => (
+  <>
+    <Header name="Help" openDrawer={navigation.openDrawer} />
 
-class NavigationDrawerStructure extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isSideMenuOpen: false
-    };
-  }
+    <Help />
+  </>
+);
 
+function Item({item, navigate}) {
+  return (
+    <TouchableOpacity
+      style={styles.listItem}
+      onPress={() => navigate(item.name)}>
+      <Text style={styles.title}>{item.name}</Text>
+    </TouchableOpacity>
+  );
+}
 
-  toggleDrawer = () => {
-    this.props.navigationProps.toggleDrawer();
+class Sidebar extends React.Component {
+  state = {
+    routes: [
+    
+      {
+        name: 'Home',
+        icon: 'Iconpayment',
+      },
+      {
+        name: 'Payments',
+        icon: 'Iconpayment',
+      },
+      {
+        name: 'Myrides',
+        icon: 'ios-settings',
+      },
+      {
+        name: 'Invite',
+        icon: 'ios-home',
+      },
+
+      {
+        name: 'Powerpass',
+        icon: 'ios-settings',
+      },
+      {
+        name: 'Notification',
+        icon: 'ios-settings',
+      },
+      {
+        name: 'Insurance',
+        icon: 'ios-settings',
+      },
+      {
+        name: 'Settings',
+        icon: 'ios-settings',
+      },
+      {
+        name: 'Help',
+        icon: 'ios-settings',
+      },
+
+    ],
   };
+
   render() {
     return (
-      <View style={{ flexDirection: 'row' }}>
-        <TouchableOpacity onPress={this.toggleDrawer.bind(this)}>
-      
-       
-          <Icon name="md-menu" size={25} style={{ marginLeft: 15 }} />
-   
-        </TouchableOpacity>
+      <View style={styles.container}>
+          <Image
+          style={{ height: 50, width: 52, }}
+          source={{ uri:'https://cdn2.iconfinder.com/data/icons/user-icon-2-1/100/user_5-15-512.png'}}/>        
+          <Text style={{fontWeight: 'bold', fontSize: 16, marginTop: 10}}>  Rahul RJ</Text>
+        <Text style={{color: '#F9D815', marginBottom: 10}}>rj7407@gmail.com</Text>
+        <View style={styles.sidebarDivider}></View>
+        <FlatList
+          style={{width: '100%', marginLeft: 30}}
+          data={this.state.routes}
+          renderItem={({item}) => (
+            <Item item={item} navigate={this.props.navigation.navigate} />
+          )}
+          keyExtractor={item => item.name}
+        />
+         <Text style={{color:'#F9D815',fontSize:20,paddingVertical:20}}>Captian App download Link</Text>
       </View>
       
     );
   }
 }
 
-
-
-const Payments_StackNavigator = createStackNavigator({
-
-  Payments: {
-    screen: Payments,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Payments ',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-      headerStyle: {
-        backgroundColor: '#F9D815',
-      },
-      headerTintColor: '#fff',
-    }),
+const Drawer = createDrawerNavigator(
+  {
+    Home: {screen: Home},
+    Payments: {screen: PaymentsScreen},
+    Myrides: {screen: RidesScreen},
+    Invite: {screen: InvitesScreen},
+    Powerpass: {screen: PowerpassScreen},
+    Notification: {screen: NotificationScreen},
+    Insurance: {screen: InsuranceScreen},
+    Settings: {screen: SettingsScreen},
+    Help: {screen: HelpScreen},
   },
-});
+  {
+    initialRouteName: 'Home',
+    unmountInactiveRoutes: true,
 
-const Myrides_StackNavigator = createStackNavigator({
-
-  Myrides: {
-    screen: Myrides,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Myrides ',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-      headerStyle: {
-        backgroundColor: '#F9D815',
-      },
-      headerTintColor: '#fff',
-    }),
+    contentComponent: props => <Sidebar {...props} />,
   },
-});
+);
 
-const Settings_StackNavigator = createStackNavigator({
-
-  Settings: {
-    screen: Settings,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Settings ',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-      headerStyle: {
-        backgroundColor: '#F9D815',
-      },
-      headerTintColor: '#fff',
-    }),
+const AppNavigator = createStackNavigator(
+  {
+    Drawer: {screen: Drawer},
   },
-});
-
-const Notification_StackNavigator = createStackNavigator({
-
-  Notification: {
-    screen: Notification,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Notifications ',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-      headerStyle: {
-        backgroundColor: '#F9D815',
-      },
-      headerTintColor: '#fff',
-    }),
+  {
+    initialRouteName: 'Drawer',
+    headerMode: 'none',
+    unmountInactiveRoutes: true,
   },
-});
-const Invite_StackNavigator = createStackNavigator({
+);
 
-  Invite: {
-    screen: Invite,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Invite friends  ',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-      headerStyle: {
-        backgroundColor: '#F9D815',
-      },
-      headerTintColor: '#fff',
-    }),
-  },
-});
-const Powerpass_StackNavigator = createStackNavigator({
+const AppContainer = createAppContainer(AppNavigator);
 
-  Powerpass: {
-    screen: Powerpass,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Powerpass  ',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-      headerStyle: {
-        backgroundColor: '#F9D815',height:60,
-      },
-      headerTintColor: '#fff',
-    }),
-  },
-});
-
-const Insurance_StackNavigator = createStackNavigator({
-
-  Insurance: {
-    screen: Insurance,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Insurance  ',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-      headerStyle: {
-        backgroundColor: '#F9D815',
-      },
-      headerTintColor: '#fff',
-    }),
-  },
-});
-const Help_StackNavigator = createStackNavigator({
-
-  Help: {
-    screen: Help,
-    navigationOptions: ({ navigation }) => ({
-      title: 'Help ',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-      headerStyle: {
-        backgroundColor: '#F9D815',
-      },
-      headerTintColor: '#fff',
-    }),
-  },
-});
-
-
-const DrawerContent = createDrawerNavigator({
-  
-
-
-  Myrides: {
-
-    screen: Myrides_StackNavigator,
-    navigationOptions: {
-      drawerLabel: 'Myrides',
-      drawerIcon: () =>
-        (<Returnride name="back-in-time" size={20} style={{ backgroundColor: '#01a3a4', color: 'white', borderRadius: 50 }} />)
-    },
-  },
-  Payments: {
-
-    screen: Payments_StackNavigator,
-    navigationOptions: {
-      drawerLabel: 'Payments',
-      drawerIcon: () =>
-        (<Iconpayment name="payment" size={20} style={{ backgroundColor: '#54a0ff', color: 'white', borderRadius: 50 }} />)
-    },
-  },
-  Settings: {
-
-    screen: Settings_StackNavigator,
-    navigationOptions: {
-      drawerLabel: 'Settings',
-      drawerIcon: () =>
-        (<Mdsettings name="md-settings" size={20} style={{ backgroundColor: '#ff9f43', color: 'white', borderRadius: 50 }} />)
-
-    },
-  },
-  Notification: {
- 
-    screen: Notification_StackNavigator,
-    navigationOptions: {
-      drawerLabel: 'Notifications',
-      drawerIcon: () =>
-        (<Notify name="ios-notifications-outline" size={20} style={{ backgroundColor: '#00E5FF', width: 20, height: 20, color: 'white', borderRadius: 50 }} />)
-
-    },
-  },
-  Invite: {
-
-    screen: Invite_StackNavigator,
-    navigationOptions: {
-      drawerLabel: 'Invite Friends',
-      drawerIcon: () =>
-        (<Gift name="ios-gift" size={20} style={{ backgroundColor: '#8395a7', width: 20, color: 'white', borderRadius: 50 }} />)
-
-    },
-  },
-  Powerpass: {
-
-    screen: Powerpass_StackNavigator,
-    navigationOptions: {
-      drawerLabel:' Power Pass',
-      drawerIcon: ()=>
-      ( <Iconpass name="wallet" size={20} style={{backgroundColor:'red', color:'white',borderRadius:50}} />)
-
-    },
-  },
-  Insurance: {
-
-    screen: Insurance_StackNavigator,
-    navigationOptions: {
-      drawerLabel: 'Insurance',
-      drawerIcon: () =>
-        (<Insuicon name="security" size={20} style={{ backgroundColor: '#795548', color: 'white', borderRadius: 50 }} />)
-
-    },
-  },
-  Help: {
-
-    screen: Help_StackNavigator,
-    navigationOptions: {
-      drawerLabel: ' Help',
-      drawerIcon: () =>
-        (<HelpIcon name="help" size={20} style={{ backgroundColor: '#00E5FF', color: 'white', borderRadius: 50 }} />)
-
-    },
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
   }
+}
 
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 40,
+    alignItems: 'center',
+    flex: 1,
+  },
+  listItem: {
+    height: 60,
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  title: {
+    fontSize: 18,
+    marginLeft: 20,
+  },
+  header: {
+    width: '100%',
+    height: 60,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#F9D815',
+    paddingHorizontal: 20,
+  },
+  profileImg: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    marginTop: 20,
+  },
+  sidebarDivider: {
+    height: 2,
+    width: '100%',
+    backgroundColor: '#F9D815',
+    marginVertical: 10,
+  },
 });
-
-
-
-export default createAppContainer(DrawerContent);

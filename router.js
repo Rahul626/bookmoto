@@ -1,240 +1,208 @@
-import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native';
-import {createAppContainer} from 'react-navigation';
-import {createDrawerNavigator} from 'react-navigation-drawer';
-import {createStackNavigator} from 'react-navigation-stack';
-import Icon from 'react-native-vector-icons/Ionicons';
+import * as React from 'react';
+import { Button, View, Text,TouchableOpacity,StyleSheet } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+
+import Login from './screens/login/login';
+import Forgot from './screens/login/forgot';
+import Register from './screens/register/register';
+import Router from './router'
+import App from './App';
+import Preference from './screens/settings/preference';
+import Profile from './screens/settings/profile';
+
+class HomeScreen extends React.Component {
+    render() {
+      return (
+     
+       <>
+            <App/>
+     </>
+      );
+    }
+  }
 
 
 
-import LocationA from './screens/maps/map';
-import Payments from './screens/payment/payment';
-import Myrides from './screens/myrides/myrides';
-import Settings from './screens/settings/settings';
-import Notification from './screens/notification/notification';
-import Invite from './screens/invite/invite';
-import Insurance from './screens/insurance/insurance';
-import Help from './screens/help/help';
-import Powerpass from './screens/powerpass/powerpass';
-
-
-
-const Header = ({name, openDrawer}) => (
-  <View style={styles.header}>
-    <TouchableOpacity onPress={() => openDrawer()}>
-      <Icon name="md-menu" size={25} style={{marginLeft: 15}} />
-    </TouchableOpacity>
-
-    <Text style={{width: 50}}></Text>
-  </View>
-);
-const Home = ({navigation}) => (
-  <>
-    <Header name="Home" openDrawer={navigation.openDrawer} />
-    <Invite />
-  </>
-);
-const PaymentsScreen = ({navigation}) => (
-  <>
-    <Header name="Payments" openDrawer={navigation.openDrawer} />
-    <Payments />
-  </>
-);
-const RidesScreen = ({navigation}) => (
-  <>
-    <Header name="My Rides" openDrawer={navigation.openDrawer} />
-    <Myrides />
-  </>
-);
-const InvitesScreen = ({navigation}) => (
-  <>
-    <Header name="Invite Friends" openDrawer={navigation.openDrawer} />
-    <Invite />
-  </>
-);
-const PowerpassScreen = ({navigation}) => (
-  <>
-    <Header name="Power Pass" openDrawer={navigation.openDrawer} />
-    <Powerpass />
-  </>
-);
-const NotificationScreen = ({navigation}) => (
-  <>
-    <Header name="Notifications" openDrawer={navigation.openDrawer} />
-    <Notification />
-  </>
-);
-const InsuranceScreen = ({navigation}) => (
-  <>
-    <Header name="Insurance" openDrawer={navigation.openDrawer} />
-    <Insurance />
-  </>
-);
-const SettingsScreen = ({navigation}) => (
-  <>
-    <Header name="Settings" openDrawer={navigation.openDrawer} />
-    <Settings />
-  </>
-);
-const HelpScreen = ({navigation}) => (
-  <>
-    <Header name="Help" openDrawer={navigation.openDrawer} />
-
-    <Help />
-  </>
-);
-
-function Item({item, navigate}) {
-  return (
-    <TouchableOpacity
-      style={styles.listItem}
-      onPress={() => navigate(item.name)}>
-      <Text style={styles.title}>{item.name}</Text>
-    </TouchableOpacity>
-  );
-}
-
-class Sidebar extends React.Component {
-  state = {
-    routes: [
-      {
-        name: 'Payments',
-        icon: 'Iconpayment',
-      },
-      {
-        name: 'Myrides',
-        icon: 'ios-settings',
-      },
-      {
-        name: 'Invite',
-        icon: 'ios-home',
-      },
-
-      {
-        name: 'Powerpass',
-        icon: 'ios-settings',
-      },
-      {
-        name: 'Notification',
-        icon: 'ios-settings',
-      },
-      {
-        name: 'Insurance',
-        icon: 'ios-settings',
-      },
-      {
-        name: 'Settings',
-        icon: 'ios-settings',
-      },
-      {
-        name: 'Help',
-        icon: 'ios-settings',
-      },
-    ],
-  };
-
+class RegisterScreen extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-          <Image
-          style={{ height: 50, width: 52, }}
-          source={{ uri:'https://cdn2.iconfinder.com/data/icons/user-icon-2-1/100/user_5-15-512.png'}}/>        
-          <Text style={{fontWeight: 'bold', fontSize: 16, marginTop: 10}}>  Rahul RJ</Text>
-        <Text style={{color: 'gray', marginBottom: 10}}>rj7407@gmail.com</Text>
-        <View style={styles.sidebarDivider}></View>
-        <FlatList
-          style={{width: '100%', marginLeft: 30}}
-          data={this.state.routes}
-          renderItem={({item}) => (
-            <Item item={item} navigate={this.props.navigation.navigate} />
-          )}
-          keyExtractor={item => item.name}
+   
+     <View >
+          <Register/>
+     <Text style={{textAlign:'center', backgroundColor:'transparent'}}  onPress={() => this.props.navigation.navigate('Login')} >Already registered? login here</Text>
+     <Text style={{textAlign: 'center', justifyContent:'center',paddingTop:125}}>#Made in India</Text>
+   </View>
+    );
+  }
+}
+class LoginScreen extends React.Component {
+    render() {
+      return (
+          <View>
+        <Login/>
+        <TouchableOpacity activeOpacity={.5} 
+         onPress={() => this.props.navigation.navigate('Home')}>
+            <View style={styles.button} > 
+              <Text >Login</Text>
+
+            </View>
+          
+          </TouchableOpacity>
+    
+           <View >
+                <Text style={{textAlign:'center', backgroundColor:'transparent'}}  onPress={() => this.props.navigation.navigate('Forgot')} >Forgot Password?</Text>
+              </View>
+        </View>
+      );
+    }
+  }
+  class ForgotScreen extends React.Component {
+    render() {
+      return (
+          <View>
+       <Forgot/>
+        </View>
+      );
+    }
+  }
+
+  class PreferenceScreen extends React.Component {
+    render() {
+      return (
+          <View>
+       <Preference/>
+        </View>
+      );
+    }
+  }
+
+
+  class ProfileScreen extends React.Component {
+    render() {
+      return (
+          <View>
+       <Profile/>
+        </View>
+      );
+    }
+  }
+
+
+  
+
+
+
+
+
+class DetailsScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Details Screen</Text>
+        <Button
+          title="Go to Details... again"
+          onPress={() => this.props.navigation.push('Login')}
+        />
+        <Button
+          title="Go to Home"
+          onPress={() => this.props.navigation.navigate('Home')}
+        />
+        <Button
+          title="Go back"
+          onPress={() => this.props.navigation.goBack()}
         />
       </View>
     );
   }
 }
 
-const Drawer = createDrawerNavigator(
-  {
-    Home: {screen: Home},
-    Payments: {screen: PaymentsScreen},
-    Myrides: {screen: RidesScreen},
-    Invite: {screen: InvitesScreen},
-    Powerpass: {screen: PowerpassScreen},
-    Notification: {screen: NotificationScreen},
-    Insurance: {screen: InsuranceScreen},
-    Settings: {screen: SettingsScreen},
-    Help: {screen: HelpScreen},
-  },
-  {
-    initialRouteName: 'Home',
-    unmountInactiveRoutes: true,
 
-    contentComponent: props => <Sidebar {...props} />,
-  },
-);
 
-const AppNavigator = createStackNavigator(
-  {
-    Drawer: {screen: Drawer},
-  },
-  {
-    initialRouteName: 'Drawer',
+
+const RootStack = createStackNavigator({
+    Register: RegisterScreen,
+    Home:HomeScreen,
+  Details: DetailsScreen,
+  Login :LoginScreen,
+  Forgot: ForgotScreen,
+  Register: RegisterScreen,
+   preference: PreferenceScreen,
+   Profile :ProfileScreen
+
+
+},
+{
     headerMode: 'none',
-    unmountInactiveRoutes: true,
-  },
-);
+    navigationOptions: {
+        headerVisible: false,
+    }
+});
 
-const AppContainer = createAppContainer(AppNavigator);
+export default createAppContainer(RootStack);
 
-export default class App extends React.Component {
-  render() {
-    return <AppContainer />;
-  }
-}
 
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: 40,
-    alignItems: 'center',
-    flex: 1,
-  },
-  listItem: {
-    height: 60,
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  title: {
-    fontSize: 18,
-    marginLeft: 20,
-  },
-  header: {
-    width: '100%',
-    height: 60,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#F9D815',
-    paddingHorizontal: 20,
-  },
-  profileImg: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    marginTop: 20,
-  },
-  sidebarDivider: {
-    height: 1,
-    width: '100%',
-    backgroundColor: 'lightgray',
-    marginVertical: 10,
-  },
-});
+    container: {
+      flex: 1,
+  
+  
+    },
+    background: {
+      width: null,
+      height: null
+    },
+    wrapper: {
+      paddingHorizontal: 15,
+    },
+    inputWrap: {
+      flexDirection: "row",
+      marginVertical: 10,
+      height: 40,
+      backgroundColor: "transparent",
+      
+  
+    },
+    input: {
+      flex: 1,
+      paddingHorizontal: 10,
+      backgroundColor: '#FFF',
+      borderRadius: 30,   borderStartWidth : 1,
+      borderEndWidth : 1,
+      borderTopWidth : 1,
+    borderLeftWidth:1,
+    borderRightWidth: 1,
+    borderBottomWidth : 1,
+    borderColor:'#F9D815'
+    },
+  
+    button: {
+      backgroundColor: "#F9D815",
+      paddingVertical: 15,
+      marginVertical: 15,
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 30
+    },
+  
+    buttonImage: {
+      resizeMode: 'contain',
+      height: '100%',
+      width: '100%',
+  
+    },
+    touachableButton: {
+      position: 'absolute',
+      right: 3,
+      height: 34,
+      width: 31,
+      padding: 2
+    },
+    forgotPasswordText: {
+  
+      backgroundColor: "transparent",
+      textAlign: "center"
+    }
+  });
+  
+  

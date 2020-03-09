@@ -135,10 +135,9 @@ export default class Profile extends Component {
       </ScrollView>
           <Animated.View style={[styles.HeaderStyle, { height: AnimateHeaderHeight, backgroundColor: AnimateHeaderBackgroundColor }]}>
 
-            <Text style={styles.HeaderInsideTextStyle}>Profile</Text>
-          <View style={styles.TextViewStyle}>
-          <Text style={{fontSize:30}}  >Jamaluddin</Text>
-            <Text >+91 7407323009</Text>
+          <View >
+          <Text style={{fontSize:30,textAlign:'center',}}  >Jamaluddin</Text>
+            <Text style={{textAlign:'center',}} >+91 7407323009</Text>
 
           </View>
            

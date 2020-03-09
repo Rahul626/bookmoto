@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions,View, StyleSheet } from 'react-native';
 import MapView,{ PROVIDER_GOOGLE } from 'react-native-maps';
 import MapViewDirections from 'react-native-google-maps-directions';
 
@@ -53,8 +53,9 @@ class locationA extends Component {
   
   render() {
     return (
-      <MapView
-      provider="google"
+      <View style={{flex:1}}>
+      <MapView 
+     
       showsUserLocation={true}
           showsMyLocationButton={true}
 					showsUserLocation={true}
@@ -113,9 +114,19 @@ class locationA extends Component {
         )}
         
       </MapView>
+      </View>
       
     );
   }
 }
 
 export default locationA ;
+
+const styles = StyleSheet.create ({
+  mapstyle: {
+    flex:1,
+     height: 400,
+     marginTop: 80,
+     margin:20,
+  }
+})

@@ -4,7 +4,7 @@ import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Le
 
 import Locationicon from 'react-native-vector-icons/SimpleLineIcons';
 import Desticon from 'react-native-vector-icons/FontAwesome';
-const Header_Maximum_Height = 200;
+const Header_Maximum_Height = 180;
 
 const Header_Minimum_Height = 50;
 

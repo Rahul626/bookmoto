@@ -14,7 +14,7 @@ import {
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const xOffset = new Animated.Value(0);
-const Header_Maximum_Height = 200;
+const Header_Maximum_Height = 180;
 const Header_Minimum_Height = 50;
 const Screen = props => {
   return (

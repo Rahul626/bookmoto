@@ -30,7 +30,7 @@ export default class Register extends Component {
             style={{
               backgroundColor: 'transparent',
               textAlign: 'center',
-              fontSize: 30,
+              fontSize: 30,paddingTop:30,
             }}>
             Namaste!
           </Text>

@@ -1,18 +1,16 @@
 
 import React from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
-import App from '../../App';
 
 import AppIntroSlider from 'react-native-app-intro-slider';
-import Login from '../../screens/login/login';
-import Register  from '../register/register';
-import Practise from '../../Practise'
+import Router from '../../router'
+
 export default class Welcome extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       showRealApp: false,
-      //To show the main page of the app
+      
     };
   }
   _onDone = () => {
@@ -38,11 +36,11 @@ export default class Welcome extends React.Component {
     );
   };
   render() {
-    //If false show the Intro Slides
+  
     if (this.state.showRealApp) {
       //Real Application
       return (
-       <Practise/>
+       <Router/>
       
       );
     } else {
