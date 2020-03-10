@@ -6,7 +6,7 @@ export default class SearchBar extends Component {
     return (
       <Container style={{ justifyContent: 'center', alignItems: 'center', shadowColor: 'white',  width: '100%', flex: 0.2 }}>
         <View>
-          <Item style={{ width: '100%'}}>
+          <Item style={{ width: '80%'}}>
             <Icon name="search" size={20} style={{ marginLeft: 8 ,color:'red' }} />
             <Input placeholder="Enter Destination" />
           </Item>

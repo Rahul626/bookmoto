@@ -5,9 +5,9 @@ export default class CurrentLocation extends Component {
   render() {
     return (
       <Container style={{ justifyContent: 'center', alignItems: 'center', shadowColor: 'white',  width: '100%', flex: 0.2 }}>
-        <Item style={{ width: '100%' }}>
+        <Item style={{ width: '80%' }}>
           <Icon name="primitive-dot" size={20} style={{ marginLeft: 8 , color:'green'}} />
-          <Input placeholder="My Current Location" />
+          <Input placeholder="Current Location" />
         </Item>
       </Container>
     );

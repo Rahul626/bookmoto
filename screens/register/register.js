@@ -59,9 +59,9 @@ export default class Register extends Component {
               placeholder="   Your Name"
               style={styles.input}
               underlineColorAndroid="transparent"
-              numeric
-              maxLength={10}
-              keyboardType={'numeric'}></TextInput>
+          
+              maxLength={15}
+            ></TextInput>
           </View>
 
           <View style={styles.inputWrap}>

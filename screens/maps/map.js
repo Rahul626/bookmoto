@@ -56,17 +56,29 @@ class locationA extends Component {
       <View style={{flex:1}}>
       <MapView 
      
-      showsUserLocation={true}
-          showsMyLocationButton={true}
-					showsUserLocation={true}
-					showsMyLocationButton={true}
-					showsCompass={true}
+     style={{ flex: 1 , zIndex: -1,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,}}
+     provider={PROVIDER_GOOGLE}
+     showsUserLocation={true}
+    
+     zoomEnabled={true}
+     scrollEnabled={true}
+     showsScale={true}
+    
+showsCompass={true}
+showsPointsOfInterest={true}
+showsBuildings={true}
+showsCompass={true}
 					followsUserLocation={true}
-					loadingEnabled={true}
-					toolbarEnabled={true}
-					zoomEnabled={true}
-					rotateEnabled={true}
-      provider={ PROVIDER_GOOGLE }
+   
+     showsScale
+     showsCompass
+     zoomEnabled={true}
+     zoomControlEnabled={true}
+   
       
         initialRegion={{
           latitude: LATITUDE,
@@ -74,6 +86,11 @@ class locationA extends Component {
           latitudeDelta: LATITUDE_DELTA,
           longitudeDelta: LONGITUDE_DELTA,
         }}
+        showsUserLocation={true}
+        showsPointsOfInterest={true}
+        showsMyLocationButton={true}
+        showsCompass={true}
+        onPoiClick={(e) => console.log(e)}
         style={[StyleSheet.absoluteFill,{flex: this.state.flex}]}
         ref={c => this.mapView = c}
         onPress={this.onMapPress}
