@@ -7,7 +7,10 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import {NativeModules} from 'react-native';
+
+
+import auth from '@react-native-firebase/auth';
+
 
 
 import {createAppContainer} from 'react-navigation';
@@ -25,11 +28,16 @@ import Insurance from './screens/insurance/insurance';
 import Help from './screens/help/help';
 import Powerpass from './screens/powerpass/powerpass';
 import Main from  './screens/main/main';
+import Logouticon from 'react-native-vector-icons/AntDesign';
+
 
 const Header = ({name, openDrawer}) => (
   <View style={styles.header}>
     <TouchableOpacity onPress={() => openDrawer()}>
       <Icon name="md-menu" size={25} style={{marginLeft: 15}} />
+   
+       
+    
     </TouchableOpacity>
 
     <Text style={{width: 50}}></Text>
@@ -149,12 +157,12 @@ class Sidebar extends React.Component {
 
   render() {
     return (
+      
       <View style={styles.container}>
           <Image
           style={{ height: 50, width: 52, }}
           source={{ uri:'https://cdn2.iconfinder.com/data/icons/user-icon-2-1/100/user_5-15-512.png'}}/>        
           <Text style={{fontWeight: 'bold', fontSize: 16, marginTop: 10}}>  Rahul RJ</Text>
-        <Text style={{color: '#F9D815', marginBottom: 10}}>rj7407@gmail.com</Text>
         <View style={styles.sidebarDivider}></View>
         <FlatList
           style={{width: '100%', marginLeft: 30}}
@@ -164,9 +172,16 @@ class Sidebar extends React.Component {
           )}
           keyExtractor={item => item.name}
         />
-         <Text style={{color:'#F9D815',fontSize:20,paddingVertical:20}}>Captian App download Link</Text>
-      </View>
-      
+            
+       <Logouticon  style={{margin:5}} name="logout"
+                  size={20}
+                  color="black" onPress={() => {auth().signOut()}}
+              />
+       <Text  style={{fontSize:15, marginBottom:20}}> log out</Text>
+       
+      </View> 
+  
+    
     );
   }
 }

@@ -6,7 +6,6 @@ import PlusIcon from 'react-native-vector-icons/FontAwesome';
 import Personalaccident from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
-
 var { height, width } = Dimensions.get('window');
 const Header_Maximum_Height = 180;
 

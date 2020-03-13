@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, ActivityIndicator, View, Text, Alert } from 'react-native';
+import { StyleSheet, ActivityIndicator,Image, View, Text,TouchableOpacity, Alert } from 'react-native';
 import { Button, Input, Icon } from 'react-native-elements';
 import auth from '@react-native-firebase/auth';
+
+
+
+
+
+
 
 export default function Register({ navigation }) {
 
@@ -27,14 +33,32 @@ export default function Register({ navigation }) {
 
     return (
         <View style={styles.container}>
+             <Text
+            style={{
+              backgroundColor: 'transparent',
+              textAlign: 'center',
+              fontSize: 30,
+            }}>
+            Namaste!
+          </Text>
+          <Text
+            style={{
+              backgroundColor: 'transparent',
+              textAlign: 'center',
+              fontSize: 20,
+            }}>
+            #1 BookMoto in India{' '}
+          </Text>
+          <Image
+          style={{ height: 100, width: 102, justifyContent:'center',marginTop:30}}
+          source={require('../../assets/images/logo.png')}
+        />
             <View style={styles.formContainer}>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text style={{ fontSize: 28, height: 50 }}>Register Here!</Text>
-                </View>
+              
                 <View style={styles.subContainer}>
                     <Input
                         style={styles.textInput}
-                        placeholder='Your Email'
+                        placeholder='    Your Email'
                         leftIcon={
                             <Icon
                             name='mail'
@@ -48,7 +72,7 @@ export default function Register({ navigation }) {
                 <View style={styles.subContainer}>
                     <Input
                         style={styles.textInput}
-                        placeholder='Your Password'
+                        placeholder='     Your Password'
                         leftIcon={
                             <Icon
                             name='lock'
@@ -60,29 +84,40 @@ export default function Register({ navigation }) {
                         onChangeText={setPassword}
                     />
                 </View>
-                <View style={styles.subContainer}>
-                    <Button
+                <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => {
+              alert('Registration Successful');
+            }}>
+                <View style={styles.subContainer}    >
+                    <Button     buttonStyle={{
+         backgroundColor: "#F0D014",borderRadius:20,
+      }}
                         style={styles.textInput}
                         icon={
                             <Icon
                                 name="check-circle"
-                                size={15}
-                                color="white"
+                                size={18}
+                                color="black"
                             />
                         }
                         title="Register"
                         onPress={() => register()} />
                 </View>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+                </TouchableOpacity>
+                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                     <Text>Already a user?</Text>
                 </View>
+            
                 <View style={styles.subContainer}>
                     <Button
-                        style={styles.textInput}
+                        buttonStyle={{
+                            backgroundColor: "#0B2EF4",borderRadius:20,
+                         }}
                         icon={
                             <Icon
                                 name="input"
-                                size={15}
+                                size={18}
                                 color="white"
                             />
                         }
@@ -133,6 +168,6 @@ const styles = StyleSheet.create({
     textInput: {
         fontSize: 18,
         margin: 5,
-        width: 200
+        width: 200,
     },
 })

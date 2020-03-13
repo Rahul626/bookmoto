@@ -6,8 +6,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Login from './screens/login/login';
 import Forgot from './screens/login/forgot';
 import Register from './screens/register/register';
-import Router from './router'
-import App from './App';
+
 import Preference from './screens/settings/preference';
 import Profile from './screens/settings/profile';
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, ActivityIndicator, View, Text, Alert } from 'react-native';
+import { StyleSheet, ActivityIndicator,Image, View, Text, Alert } from 'react-native';
 import { Button, Input, Icon } from 'react-native-elements';
 import auth from '@react-native-firebase/auth';
 
@@ -23,14 +23,21 @@ export default function Reset({ navigation }) {
 
     return (
         <View style={styles.container}>
+               <Image
+          style={{ height: 100, width: 102, marginHorizontal: 150, }}
+          source={require('../../assets/images/logo.png')}
+        />
             <View style={styles.formContainer}>
+         
                 <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                    <Text style={{ fontSize: 28, height: 50  }}>Reset Password!</Text>
+                   
+        <Text style={{ backgroundColor: 'transparent', textAlign: 'center', paddingTop:10, fontSize: 25 }} >Forgot your password?</Text>
+        <Text style={{ backgroundColor: 'transparent',textAlign: 'center', paddingTop:10 }} >Confirm your email id and we'll send the instructions.</Text>
                 </View>
                 <View style={styles.subContainer}>
                     <Input
                         style={styles.textInput}
-                        placeholder='Your Email'
+                        placeholder='Your registered Email id'
                         leftIcon={
                             <Icon
                             name='mail'
@@ -42,26 +49,30 @@ export default function Reset({ navigation }) {
                     />
                 </View>
                 <View style={styles.subContainer}>
-                    <Button
+                    <Button   buttonStyle={{
+                        backgroundColor: "#F9D815",borderRadius:20,
+                     }}
                         style={styles.textInput}
                         icon={
                             <Icon
                                 name="input"
-                                size={15}
-                                color="white"
+                                size={18}
+                                color="black"
                             />
                         }
                         title="Reset"
                         onPress={() => reset()} />
                 </View>
                 <View style={styles.subContainer}>
-                    <Button
+                    <Button   buttonStyle={{
+                        backgroundColor: "#D4BC67",borderRadius:20,
+                     }}
                         style={styles.textInput}
                         icon={
                             <Icon
                                 name="check-circle"
-                                size={15}
-                                color="white"
+                                size={18}
+                                color="black"
                             />
                         }
                         title="Back to Login"
@@ -92,7 +103,8 @@ const styles = StyleSheet.create({
     },
     formContainer: {
         height: 400,
-        padding: 20
+        padding: 20,
+        width:400
     },
     subContainer: {
         marginBottom: 20,

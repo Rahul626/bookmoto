@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, ActivityIndicator, View, Text, Alert } from 'react-native';
-import { Button, Input, Icon } from 'react-native-elements';
+import { StyleSheet, ActivityIndicator, View,Image, Text, Alert } from 'react-native';
+import {Button,  Input, Icon } from 'react-native-elements';
 import auth from '@react-native-firebase/auth';
 
 export default function Login({ navigation }) {
@@ -27,10 +27,16 @@ export default function Login({ navigation }) {
 
     return (
         <View style={styles.container}>
+             <Text style={{ backgroundColor: 'transparent', textAlign: 'center', fontSize: 30,marginTop:10 }} >Welcome Back!</Text>
+          <Text style={{ backgroundColor: 'transparent', textAlign: 'center', fontSize: 20,marginBottom:20 }} >#1 BookMoto in India </Text>
+        
+          <Image
+          style={{ height: 100, width: 102, justifyContent:'center' }}
+          source={require('../../assets/images/logo.png')}
+        />
+          
             <View style={styles.formContainer}>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-                    <Text style={{ fontSize: 28, height: 50  }}>Please Login!</Text>
-                </View>
+            
                 <View style={styles.subContainer}>
                     <Input
                         style={styles.textInput}
@@ -62,28 +68,31 @@ export default function Login({ navigation }) {
                 </View>
                 <View style={styles.subContainer}>
                     <Button
+                    buttonStyle={{
+                        backgroundColor: "#F0D014",borderRadius:20,
+                     }}
                         style={styles.textInput}
                         icon={
                             <Icon
                                 name="input"
-                                size={15}
-                                color="white"
+                                size={18}
+                                color="black"
                             />
                         }
                         title="Login"
                         onPress={() => login()} />
                 </View>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text>Forgot Password?</Text>
-                </View>
-                <View style={styles.subContainer}>
-                    <Button
+                
+                <View >
+                    <Button buttonStyle={{
+         backgroundColor: "#D4BC67",borderRadius:20,
+      }}
                         style={styles.textInput}
                         icon={
                             <Icon
                                 name="refresh"
-                                size={15}
-                                color="white"
+                                size={18}
+                                color="black"
                             />
                         }
                         title="Reset Password"
@@ -91,16 +100,19 @@ export default function Login({ navigation }) {
                             navigation.navigate('Reset');
                         }} />
                 </View>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                    <Text>Not a user?</Text>
+                <View >
+                    <Text style={{textAlign:'center'}}>Not a user?</Text>
                 </View>
                 <View style={styles.subContainer}>
                     <Button
+                    buttonStyle={{
+                        backgroundColor: "#1F46E0",borderRadius:20, 
+                     }}
                         style={styles.textInput}
                         icon={
                             <Icon
                                 name="check-circle"
-                                size={15}
+                                size={18}
                                 color="white"
                             />
                         }
@@ -111,7 +123,7 @@ export default function Login({ navigation }) {
                 </View>
                 {showLoading &&
                     <View style={styles.activity}>
-                        <ActivityIndicator size="large" color="#0000ff" />
+                        <ActivityIndicator size="large" />
                     </View>
                 }
             </View>
@@ -128,16 +140,21 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems:'center',
+        paddingTop:30
+      
     },
     formContainer: {
-        height: 400,
+        height: 500,
         width:400,
         padding: 20
     },
     subContainer: {
         marginBottom: 20,
         padding: 5,
+      
+        
+      
     },
     activity: {
         position: 'absolute',
@@ -146,11 +163,25 @@ const styles = StyleSheet.create({
         top: 0,
         bottom: 0,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',  
+      
+        
+        
     },
+    button: {
+        backgroundColor: '#F9D815',
+        paddingVertical: 15,
+        marginVertical: 15,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 30,
+      },
     textInput: {
         fontSize: 18,
         margin: 5,
-        width: 200
+        width: 200,
+        color:'black'
+       
+        
     },
 })

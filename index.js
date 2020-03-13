@@ -11,6 +11,6 @@ import {NativeModules} from 'react-native';
 // import SearchBar from './screens/foot/searchbar';
 // import Splash from './splash';
 // import Main from './screens/main/main';
-import Test from './Test';
+import Routes from './Routes';
 
-AppRegistry.registerComponent(appName, () =>Test);
+AppRegistry.registerComponent(appName, () =>Routes);
