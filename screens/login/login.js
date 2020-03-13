@@ -34,7 +34,7 @@ export default class Login extends Component {
         </View>
 
         <Image
-          style={{ height: 100, width: 102, marginHorizontal: 150, marginVertical: 71, Color: "#F9D815" }}
+          style={{ height: 100, width: 102, marginHorizontal: 150, marginVertical: 71 }}
           source={require('../../assets/images/logo.png')}
         />
 

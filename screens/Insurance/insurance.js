@@ -132,7 +132,9 @@ export default class Insurance extends Component {
 
         </Card>
         <View style={{ width: width * 0.5, height: 40, borderRadius: 30, backgroundColor: 'black', justifyContent: 'center', alignItems: 'center',alignSelf: 'center', alignContent: 'center' }}>
-          <Text style={{ fontSize: 20, fontWeight: '300', color: 'yellow' }}>CLAIM INSURANCE</Text>
+          <Text style={{ fontSize: 20, fontWeight: '300', color: 'yellow' }}     onPress={() => {
+              alert('This will redirect to Insurance web page');
+            }} >CLAIM INSURANCE</Text>
           
         </View>
         <Text style={{margin:10, paddingRight:20}}>prepared_by</Text>

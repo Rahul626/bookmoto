@@ -69,8 +69,8 @@ export default class Register extends Component {
               placeholder="   Mobile Number"
               style={styles.input}
               underlineColorAndroid="transparent"
-              numeric
-              keyboardType={'numeric'}></TextInput>
+           
+             ></TextInput>
           </View>
           <View style={styles.inputWrap}>
             <TextInput
