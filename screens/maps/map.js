@@ -56,17 +56,19 @@ class locationA extends Component {
       <View style={{flex:1}}>
       <MapView 
      
-      showsUserLocation={true}
-          showsMyLocationButton={true}
-					showsUserLocation={true}
-					showsMyLocationButton={true}
-					showsCompass={true}
+     provider={PROVIDER_GOOGLE}  
+ showsUserLocation={true} 
+ showsMyLocationButton={true}
+ showsCompass={true}
+ zoomEnabled={true}
+ zoomControlEnabled={true}
+ rotateEnabled={true}
+ ref={ref => { this.map = ref; }}
+ followUserLocation={true}
+ 
 					followsUserLocation={true}
 					loadingEnabled={true}
 					toolbarEnabled={true}
-					zoomEnabled={true}
-					rotateEnabled={true}
-      provider={ PROVIDER_GOOGLE }
       
         initialRegion={{
           latitude: LATITUDE,

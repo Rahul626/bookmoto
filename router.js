@@ -95,35 +95,11 @@ class LoginScreen extends React.Component {
 
 
 
-class DetailsScreen extends React.Component {
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
-        <Button
-          title="Go to Details... again"
-          onPress={() => this.props.navigation.push('Login')}
-        />
-        <Button
-          title="Go to Home"
-          onPress={() => this.props.navigation.navigate('Home')}
-        />
-        <Button
-          title="Go back"
-          onPress={() => this.props.navigation.goBack()}
-        />
-      </View>
-    );
-  }
-}
-
-
 
 
 const RootStack = createStackNavigator({
     Register: RegisterScreen,
     Home:HomeScreen,
-  Details: DetailsScreen,
   Login :LoginScreen,
   Forgot: ForgotScreen,
   Register: RegisterScreen,
